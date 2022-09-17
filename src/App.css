@@ -149,13 +149,42 @@
 
 .page-not-found .text-not-found {
   /* margin-top: 500px; */
-  color: #EFC81A !important;
+  color: #efc81a !important;
   font-size: 40px;
 }
 
 /* footer */
 .footer-global {
   height: 300px;
-  background: #EFC81A;
+  background: #efc81a;
 }
 
+/* Profile */
+.utama {
+  margin-bottom: 150px;
+}
+footer .bottom {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .bottom ul {
+  display: flex;
+  list-style: none;
+}
+
+footer .bottom ul li {
+  margin: 0 10px;
+}
+
+.footer {
+  background-color: #61dafb;
+}
+
+footer .bottom ul li a {
+  color: black;
+  font-size: 0.8rem;
+  text-decoration: none;
+}

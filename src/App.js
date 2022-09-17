@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
 
 //pages
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
+import Profile from "./pages/Profile";
 
 //component
 import Footer from "./component/footer";
@@ -17,12 +18,11 @@ import Footer from "./component/footer";
 function App() {
   // let location = useLocation();
   return (
-
     <>
       {/* {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <NavigationBar />} */}
 
       <Routes>
-
+        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Navigate to="/home" replace="true" />} />
         <Route path="/home" element={<Home />} />
 
@@ -30,12 +30,10 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
 
         <Route path="*" element={<PageNotFound />} />
-
       </Routes>
       {/* <ToastContainer /> */}
       <Footer />
     </>
-
   );
 }
 
