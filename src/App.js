@@ -11,15 +11,16 @@ import Profile from "./pages/Profile";
 
 //component
 import Footer from "./component/footer";
+import Navbar from "./component/navbar";
 
 //modules
 // import { ToastContainer } from "react-toastify";
 
 function App() {
-  // let location = useLocation();
+  let location = useLocation();
   return (
     <>
-      {/* {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <NavigationBar />} */}
+      {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Navbar />}
 
       <Routes>
         <Route path="/profile" element={<Profile />} />

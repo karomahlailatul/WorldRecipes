@@ -10,7 +10,6 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import SignInReducer from "./Slice/SignInSlice"
 import SignUpUserReducer from "./Slice/SignUpUserSlice"
-import SignUpSellerReducer from "./Slice/SignUpSellerSlice"
 
 // import ProfileUserReducer from "./Slice/ProfileUserSlice"
 // import ProfileSellerReducer from "./Slice/ProfileSellerSlice"
@@ -34,7 +33,6 @@ export default configureStore({
 
         SignIn: SignInReducer,
         SignUpUser: SignUpUserReducer,
-        SignUpSeller: SignUpSellerReducer,
 
     }
 });
