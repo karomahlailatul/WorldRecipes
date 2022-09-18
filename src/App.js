@@ -8,8 +8,9 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
-import DetailResep from "./pages/AddRecipes";
-import AddRecipe from "./pages/DetailRecipes";
+import DetailResep from "./pages/DetailRecipes";
+import AddRecipe from "./pages/AddRecipes";
+
 
 //component
 import Footer from "./component/footer";
