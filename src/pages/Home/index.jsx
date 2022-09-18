@@ -15,7 +15,7 @@ const Home = () => {
     <Fragment>
       <div className="home-page">
         <div className="container col-12">
-          <div className="col-12 d-flex landing-page-1">
+          {/* <div className="col-12 d-flex landing-page-1">
             <div className="col-5 bg-white">
               <div className="title-home-page">
                 <h1 className="mb-2">Discover Recipe</h1>
@@ -30,12 +30,12 @@ const Home = () => {
               <img className="img-promotion" crossOrigin="anonymous" src={require("../../assets/images/home_1.png")} alt="" />
             </div>
             <div className="col-5 bg-warning"></div>
-          </div>
+          </div> */}
+          
           <div className="col-12 d-flex">
-            <div className="col-12 bg-white d-flex">
-              <div className="rectangle" />
+            <div className="col-12 bg-white d-flex justify-content-end">
               <div className="d-flex align-items-center">
-                <h2>&nbsp;Popular For You !</h2>
+                <h2>Popular For You !&nbsp; </h2> <div className="rectangle" />
               </div>
             </div>
           </div>
@@ -117,13 +117,16 @@ const Home = () => {
               </div>
             </div>
           </div>
+
           <div className="col-12 d-flex">
-            <div className="col-12 bg-white d-flex justify-content-end">
+            <div className="col-12 bg-white d-flex">
+              <div className="rectangle" />
               <div className="d-flex align-items-center">
-                <h2>New Recipe&nbsp; </h2> <div className="rectangle" />
+                <h2>&nbsp;New Recipe!</h2>
               </div>
             </div>
           </div>
+          
           <div className="col-12 d-flex ">
             <div className="col-12 bg-white d-flex">
               <div className="col-12 my-5">

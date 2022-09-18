@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
 
 import logo from "../../assets/icons/logo_navbar.png";
-import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation ,Link} from "react-router-dom";
 
 // import { useDispatch, useSelector } from "react-redux";
 
@@ -98,17 +98,20 @@ const NavBar = () => {
 
   const pictureThumbnails = (
     <span>
-      <img className="pictureThumbnails" crossOrigin="anonymous" src={
-        // user_picture === null || user_picture === undefined ? 
-        PhotoEmpty
-        //  : user_picture
-        } alt="" />
+      <img
+        className="pictureThumbnails"
+        crossOrigin="anonymous"
+        src={
+          // user_picture === null || user_picture === undefined ?
+          PhotoEmpty
+          //  : user_picture
+        }
+        alt=""
+      />
 
       {/* <img className="pictureThumbnails" crossOrigin="anonymous" src={user_picture} alt="" /> */}
     </span>
   );
-
- 
 
   useEffect(() => {
     // dispatchProfileUser();
@@ -123,7 +126,16 @@ const NavBar = () => {
     <Fragment>
       <Navbar key={expand} bg="white" expand={expand} className="mb-3 ShadowBox">
         <Container fluid="sm">
-
+        <Navbar.Brand className="me-5">
+            <div
+              onClick={() => {
+                navigate("../home");
+              }}
+              className="col-lg-3 col-md-3 col-sm-3  cursor-pointer"
+            >
+              <img className="my-auto logo-toggle-navbar" src={logo} alt="" />
+            </div>
+          </Navbar.Brand>
           <Navbar.Toggle onClick={toggleOffcanvas} aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
           <Navbar.Offcanvas show={show} id={`offcanvasNavbar-expand-${"expand"}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="bottom">
@@ -182,20 +194,25 @@ const NavBar = () => {
                                 crossOrigin="anonymous"
                                 // src={user_picture} alt=""
                                 src={
-                                  // user_picture === null || user_picture === undefined ? 
+                                  // user_picture === null || user_picture === undefined ?
                                   PhotoEmpty
                                   //  : user_picture
-                                  }
+                                }
                                 alt=""
                               />
                             </div>
                             <div className="col-8">
-                              <h5 className="fw-bold text-muted">{
-                              // user_email
-                              }</h5>
-                              <p className="text-muted">UID : {
-                              // user_id
-                              }</p>
+                              <h5 className="fw-bold text-muted">
+                                {
+                                  // user_email
+                                }
+                              </h5>
+                              <p className="text-muted">
+                                UID :{" "}
+                                {
+                                  // user_id
+                                }
+                              </p>
                             </div>
                             <div className="col-2 d-flex ">
                               <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
@@ -290,13 +307,19 @@ const NavBar = () => {
                           <div className="col-4 d-flex justify-content-center align-items-center block">
                             <NavDropdown title={pictureThumbnails} align="end" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                               <NavDropdown.Header className="d-grid ">
-                                <p className="mb-0 fw-bold">{
-                                // user_email
-                                } </p>
+                                <p className="mb-0 fw-bold">
+                                  {
+                                    // user_email
+                                  }{" "}
+                                </p>
                                 <p className="mb-0">
-                                  <small> UID : {
-                                  // user_id
-                                  }</small>
+                                  <small>
+                                    {" "}
+                                    UID :{" "}
+                                    {
+                                      // user_id
+                                    }
+                                  </small>
                                 </p>
                               </NavDropdown.Header>
                               <NavDropdown.Divider />
@@ -333,7 +356,6 @@ const NavBar = () => {
                 </Fragment>
               ) : (
                 <Fragment>
-                  {" "}
                   {/* Navbar User No Auth */}
                   <div className="col-12 d-xl-flex d-lg-flex d-md-grid d-sm-grid ">
                     {windowSize.innerWidth <= 992 ? (
@@ -353,7 +375,6 @@ const NavBar = () => {
                                 <img className="" src={require("../../assets/images/icons/search.svg").default} alt="search" />
                               </Button>
                             </div>
-                           
                           </Form>
                         </div>
                         <div className="d-flex mt-4 ">
@@ -387,9 +408,9 @@ const NavBar = () => {
                       </Fragment>
                     ) : (
                       <Fragment>
-                        <div className="col-xl-8 col-lg-8">
-                          <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
-                            <div className="col-9 d-flex border border-1 rounded-pill form-input">
+                        <div className="col-xl-9 col-lg-9 d-flex">
+                          <Form onSubmit={handleSearchSubmit} className="col-12 form-search d-flex ">
+                            <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
@@ -398,14 +419,12 @@ const NavBar = () => {
                                 className="bg-transparent border-0 rounded-pill btn-search"
                                 type="submit"
                               >
-                                <img className="" src={require("../../assets/images/icons/search.svg").default} alt="search" />
+                                <img className="my-0" src={require("../../assets/images/icons/search.svg").default} alt="search" />
                               </Button>
                             </div>
                           </Form>
-
-                          
                         </div>
-                        <div className="col-xl-4 col-lg-4 d-flex">
+                        <div className="col-xl-3 col-lg-3 d-flex">
                           <div className="col-6 d-grid px-2">
                             <Button
                               variant="warning"

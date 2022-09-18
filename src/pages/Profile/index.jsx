@@ -12,7 +12,6 @@ import ModalEdit from "../../component/modalEdit/index";
 const Profile = () => {
   return (
     <Fragment>
-      <Navbar />
       <div className="profile-page">
         <div className="container">
           <section className="profile ff-airbnb text-center mb-5">
@@ -101,7 +100,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </Fragment>
   );
 };
