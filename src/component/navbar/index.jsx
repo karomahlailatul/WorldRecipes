@@ -124,7 +124,7 @@ const NavBar = () => {
 
   return (
     <Fragment>
-      <Navbar key={expand} bg="white" expand={expand} className="mb-3 ShadowBox">
+      <Navbar key={expand} bg="white" expand={expand} className="mb-3 shadow-sm">
         <Container fluid="sm">
         <Navbar.Brand className="me-5">
             <div
@@ -139,7 +139,7 @@ const NavBar = () => {
           <Navbar.Toggle onClick={toggleOffcanvas} aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
           <Navbar.Offcanvas show={show} id={`offcanvasNavbar-expand-${"expand"}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="bottom">
-            <Offcanvas.Header className="ShadowBox">
+            <Offcanvas.Header className="shadow-sm">
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} className="col-12 d-flex justify-content-between">
                 <div
                   onClick={() => {
@@ -391,7 +391,7 @@ const NavBar = () => {
                             </div>
                           </Form>
                         </div>
-                        <div className="col-xl-4 col-lg-8 d-flex">
+                        <div className="col-xl-4 col-lg-4 d-flex">
                           <div className="col-6 d-grid px-2">
                             <Button
                               variant="warning"
