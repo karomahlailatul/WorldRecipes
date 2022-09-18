@@ -1,5 +1,5 @@
 import React, { useState,useEffect, Fragment } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { postSignIn } from "../../app/redux/Slice/SignInSlice";
@@ -49,17 +49,17 @@ const SignIn = () => {
 
   return (
     <Fragment>
-      <div className="sign-in-page">
-      <div className="container col-12 d-flex">
-          <div className="col-6 bg-warning">
-            <img className="bg-picture" crossOrigin="anonymous" src={require("../../assets/images/bg.png")} alt="" />
-            <img className="icon-picture" crossOrigin="anonymous" src={require("../../assets/icons/icon.png")} alt="" />
+      <div className="sign-in-page d-flex justify-content-center align-items-center">
+      <div className="container col-12">
+          <div className="mt-5">
+           <Link className="text-muted text-decoration-none" to={"../home"}>{"<"}&nbsp;Back Home</Link>
           </div>
-          <div className="col-6 container text-start align-items-center">
-            <form onSubmit={handleLogin} className="container form-sign-in">
-              <div className="text-center">
+          <div>
+          <div className="d-flex col-xl-9 col-lg-9 col-md-12 col-sm-12 container justify-content-center">
+            <form onSubmit={handleLogin} className="w-100 form-sign-in">
+              <div className="text-center my-5">
               <h2 className="text-warning">Welcome</h2>
-              <h6 className="text-muted">Log in insto your exiting account</h6>
+              <h6 className="text-muted">Log in into your exiting account</h6>
               </div>
               
               <div>
@@ -90,11 +90,13 @@ const SignIn = () => {
               </div>
               <div className="col-12 d-flex justify-content-center my-2">
                 <p className="text-muted">Don’t have an account?</p>
-                <p className="text-warning"> Sign Up Here</p>
+                <Link className="text-warning text-decoration-none" to={"../SignUp"}>&nbsp;Sign Up Here</Link>
               </div>
             </form>
-          </div>
+          </div></div>
         </div>
+
+
       </div>
     </Fragment>
   );

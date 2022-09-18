@@ -165,71 +165,79 @@
     height: 150px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 150px;
+    width: 150px !important;
     height: 150px !important;
+    object-fit: cover !important;
   }
 }
 
 @media only screen and (min-width: 576px) {
 
   .home-page .imageswipper1 {
-    width: 150px;
-    height: 150px !important;
+    width: 500px !important;
+    height: 500px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 150px;
-    height: 150px !important;
+    width: 145px !important;
+    height: 145px !important;
+    object-fit: cover !important;
   }
 }
 
 @media only screen and (min-width: 768px) {
 
   .home-page .imageswipper1 {
-    width: 200px;
+    width: 200px  !important;
     height: 200px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 200px;
+    width: 200px  !important;
     height: 200px !important;
+    object-fit: cover !important;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .home-page .imageswipper1 {
-    width: 280px;
+    width: 280px  !important;
     height: 280px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 280px;
+    width: 280px  !important;
     height: 280px !important;
+    object-fit: cover !important;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .home-page .imageswipper1 {
-    width: 340px;
+    width: 340px  !important;
     height: 340px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 340px;
-    height: 340px !important;
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: cover !important;
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .home-page .imageswipper1 {
-    width: 400px;
+    width: 400px  !important;
     height: 400px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 400px;
-    height: 400px !important;
+    width: 190px !important;
+    height: 190px !important;
+    object-fit: cover !important;
   }
 }
 
 
-
-
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: rgba(247, 197, 60, 0.75) !important;;
+  opacity: 1;
+}
 
 
 
@@ -336,9 +344,9 @@
 }
 
 .sign-in-page .form-sign-in {
-  margin-top: 300px;
-  padding-left: 50px;
-  padding-right: 50px;
+  margin-top: 180px !important;
+  /* padding-left: 50px;
+  padding-right: 50px; */
 }
 
 
@@ -449,7 +457,7 @@
 
 /* footer */
 .footer-global {
-  height: 300px;
+  height: 245px;
   background: #efc81a;
 }
 
@@ -661,7 +669,7 @@ footer .bottom ul li a {
   width: 72px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid DB3022;
+  border: 1px solid rgba(247, 197, 60, 0.75);
 }
 
 .btn-close-offcanvas {

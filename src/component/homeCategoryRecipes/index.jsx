@@ -22,13 +22,16 @@ const HomeCategoryRecipes = () => {
   return (
     <Fragment>
      <div className="col-12 d-flex ">
-            <div className="col-12 bg-white d-flex">
-              <div className="rectangle" />
-              <div className="d-flex align-items-center">
-                <h2>&nbsp;Popular Recipe</h2>
-              </div>
-            </div>
+            
+
+        <div className="col-12 bg-white d-flex">
+          <div className="rectangle" />
+          <div className="d-flex align-items-center">
+            <h2>&nbsp;Region Recipes</h2>
           </div>
+          </div>
+          </div>
+
           <div className="col-12">
             <div className="container col-12 my-5 category-page ">
               <Swiper
@@ -45,7 +48,6 @@ const HomeCategoryRecipes = () => {
                   },
                   768: {
                     slidesPerView: 3,
-
                     grid: { rows: 30, fill: "row" },
                   },
                   992: {
@@ -53,11 +55,11 @@ const HomeCategoryRecipes = () => {
                     grid: { rows: 30, fill: "row" },
                   },
                   1200: {
-                    slidesPerView: 3,
+                    slidesPerView: 6,
                     grid: { rows: 30, fill: "row" },
                   },
                   1400: {
-                    slidesPerView: 3,
+                    slidesPerView: 6,
                     grid: { rows: 30, fill: "row" },
                   },
                 }}
@@ -88,48 +90,48 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_1.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/african.jpg")}
                     alt=""
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_2.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/american-latin.jpg")}
                     alt=""
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_3.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/american.jpg")}
                     alt=""
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_3.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/asian.jpg")}
                     alt=""
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_1.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/australian.jpg")}
                     alt=""
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("")}
-                    src={require("../../assets/images/home_2.png")}
+                    onClick={() => navigate("../category")}
+                    src={require("../../assets/images/category/european.jpeg")}
                     alt=""
                   />
                 </SwiperSlide>
