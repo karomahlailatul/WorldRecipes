@@ -12,19 +12,19 @@ export const postSignIn = createAsyncThunk("SignIn/postSignIn", async (data) => 
         });
 
         if (response.data.statusCode === 201) {
-            toast.success("Sign In Success. Welcome " + response.data.data.name, { autoClose: 2000 });
+            toast.success("Sign In Success. Welcome " + response.data.data.name, { autoClose: 2000 ,toastId: "successSignIn" });
             localStorage.setItem("token", response.data.data.token);
             localStorage.setItem("refreshToken", response.data.data.refreshToken);
             localStorage.setItem("role", response.data.data.role);
             localStorage.setItem("id", response.data.data.id);
 
         } else {
-            toast.warning(response.data.message, { autoClose: 2000 });
+            toast.warning(response.data.message, { autoClose: 2000 ,toastId: "warningSignIn" });
         }
 
         return response.data;
     } catch (error) {
-        toast.warning(error.response.data.message, { autoClose: 2000 });
+        toast.warning(error.response.data.message, { autoClose: 2000,toastId: "errorSignIn"  });
     }
 });
 

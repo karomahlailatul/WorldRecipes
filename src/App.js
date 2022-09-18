@@ -17,7 +17,7 @@ import Footer from "./component/footer";
 import Navbar from "./component/navbar";
 
 //modules
-// import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   let location = useLocation();
@@ -39,7 +39,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
 
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Footer />}
     </>
   );

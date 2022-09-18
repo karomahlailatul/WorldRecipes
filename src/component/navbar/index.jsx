@@ -162,9 +162,9 @@ const NavBar = () => {
                   <div className="col-12 d-xl-flex d-lg-flex d-md-grid d-sm-grid ">
                     {windowSize.innerWidth <= 992 ? (
                       <Fragment>
-                        <div className="col-xl-8 col-lg-8">
+                        <div className="col-xl-12 col-lg-12">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
-                            <div className="col-9 d-flex border border-1 rounded-pill form-input">
+                            <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
@@ -177,18 +177,13 @@ const NavBar = () => {
                                 <img className="" src={require("../../assets/images/icons/search.svg").default} alt="search" />
                               </Button>
                             </div>
-                            <div className="col-1 border border-1 rounded-3 d-flex justify-content-center align-items-center block" type="button" data-bs-toggle="modal" data-bs-target="#modalFilter">
-                              <img className="ico" src={require("../../assets/images/icons/filter.svg").default} alt="" />
-                            </div>
-                            <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                              <img className="ico" src={require("../../assets/images/icons/cart.svg").default} alt="" />
-                            </div>
+                           
                           </Form>
                         </div>
 
                         <div className="d-grid ">
                           <div className="col-12 d-flex mt-4">
-                            <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
+                            <div className="col-4 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
                               <img
                                 className="photoSide"
                                 crossOrigin="anonymous"
@@ -201,30 +196,9 @@ const NavBar = () => {
                                 alt=""
                               />
                             </div>
-                            <div className="col-8">
-                              <h5 className="fw-bold text-muted">
-                                {
-                                  // user_email
-                                }
-                              </h5>
-                              <p className="text-muted">
-                                UID :{" "}
-                                {
-                                  // user_id
-                                }
-                              </p>
-                            </div>
-                            <div className="col-2 d-flex ">
-                              <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                                <img className="ico" src={require("../../assets/images/icons/bell.svg").default} alt="" />
-                              </div>
-                              <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                                <img className="ico" src={require("../../assets/images/icons/mail.svg").default} alt="" />
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="col-12 d-grid mt-4">
+                            <div className="col-8 d-grid">
+                            <Nav.Link>
+                            <div className="col-12 d-grid mt-4">
                             <Button
                               variant="outline-warning"
                               onClick={() => {
@@ -238,7 +212,6 @@ const NavBar = () => {
                             </Button>
                           </div>
 
-                          <Nav.Link>
                             <div className="col-12 d-grid mt-4">
                               <Button
                                 variant="outline-warning"
@@ -249,11 +222,18 @@ const NavBar = () => {
                                 className=" rounded-pill block  "
                                 type="button"
                               >
-                                <p className="my-auto"> Switch to Seller</p>
+                                <p className="my-auto">My Recipes</p>
                               </Button>
                             </div>
-                          </Nav.Link>
+                            
+                            </Nav.Link>
+                            </div>
+                          
+                          </div>
 
+                          
+
+                        
                           <div className="col-12 d-grid mt-4">
                             <Button
                               variant="warning"
@@ -272,9 +252,9 @@ const NavBar = () => {
                       </Fragment>
                     ) : (
                       <Fragment>
-                        <div className="col-xl-10 col-lg-10">
+                        <div className="col-xl-8 col-lg-8">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
-                            <div className="col-9 d-flex border border-1 rounded-pill form-input">
+                            <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
@@ -286,27 +266,14 @@ const NavBar = () => {
                                 <img className="" src={require("../../assets/images/icons/search.svg").default} alt="search" />
                               </Button>
                             </div>
-                            <div className="col-1 border border-1 rounded-3 d-flex justify-content-center align-items-center block" type="button" data-bs-toggle="modal" data-bs-target="#modalFilter">
-                              <img className="ico" src={require("../../assets/images/icons/filter.svg").default} alt="" />
-                            </div>
-                            <div className="col-2 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                              <img className="ico" src={require("../../assets/images/icons/cart.svg").default} alt="" />
-                            </div>
+                          
                           </Form>
                         </div>
 
-                        <div className="col-xl-2 col-lg-2 d-flex">
-                          <div className="col-8 d-flex ">
-                            <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                              <img className="ico" src={require("../../assets/images/icons/bell.svg").default} alt="" />
-                            </div>
-                            <div className="col-6 border border-0 rounded-3 d-flex justify-content-center align-items-center block" type="button">
-                              <img className="ico" src={require("../../assets/images/icons/mail.svg").default} alt="" />
-                            </div>
-                          </div>
-                          <div className="col-4 d-flex justify-content-center align-items-center block">
+                        <div className="col-xl-4 col-lg-4 d-flex">
+                          <div className="col-12 d-flex justify-content-end align-items-center block">
                             <NavDropdown title={pictureThumbnails} align="end" id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                              <NavDropdown.Header className="d-grid ">
+                              {/* <NavDropdown.Header className="d-grid ">
                                 <p className="mb-0 fw-bold">
                                   {
                                     // user_email
@@ -322,7 +289,7 @@ const NavBar = () => {
                                   </small>
                                 </p>
                               </NavDropdown.Header>
-                              <NavDropdown.Divider />
+                              <NavDropdown.Divider /> */}
                               <NavDropdown.Item
                                 onClick={() => {
                                   navigate("../profile/user");
@@ -336,7 +303,7 @@ const NavBar = () => {
                                   navigate("../profile/seller");
                                 }}
                               >
-                                Switch to Seller
+                                My Recipes
                               </NavDropdown.Item>
                               <NavDropdown.Divider />
                               <NavDropdown.Item
@@ -360,9 +327,9 @@ const NavBar = () => {
                   <div className="col-12 d-xl-flex d-lg-flex d-md-grid d-sm-grid ">
                     {windowSize.innerWidth <= 992 ? (
                       <Fragment>
-                        <div className="col-xl-8 col-lg-8">
+                        <div className="col-xl-12 col-lg-12">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
-                            <div className="col-9 d-flex border border-1 rounded-pill form-input">
+                            <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
@@ -388,12 +355,12 @@ const NavBar = () => {
                               className=" rounded-pill block "
                               type="button"
                             >
-                              <p className="my-auto">Login</p>
+                              <p className="my-auto text-light">Login</p>
                             </Button>
                           </div>
                           <div className="col-6 d-grid">
                             <Button
-                              variant="outline-warning"
+                              variant="warning"
                               onClick={() => {
                                 navigate("../sign-up");
                                 toggleOffcanvas();
@@ -401,14 +368,14 @@ const NavBar = () => {
                               className=" rounded-pill block  "
                               type="button"
                             >
-                              <p className="my-auto"> Sign Up</p>
+                              <p className="my-auto text-light"> Sign Up</p>
                             </Button>
                           </div>
                         </div>
                       </Fragment>
                     ) : (
                       <Fragment>
-                        <div className="col-xl-9 col-lg-9 d-flex">
+                        <div className="col-xl-8 col-lg-8 d-flex">
                           <Form onSubmit={handleSearchSubmit} className="col-12 form-search d-flex ">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
@@ -424,7 +391,7 @@ const NavBar = () => {
                             </div>
                           </Form>
                         </div>
-                        <div className="col-xl-3 col-lg-3 d-flex">
+                        <div className="col-xl-4 col-lg-8 d-flex">
                           <div className="col-6 d-grid px-2">
                             <Button
                               variant="warning"
@@ -435,12 +402,12 @@ const NavBar = () => {
                               className=" rounded-pill block "
                               type="button"
                             >
-                              <p className="my-auto">Login</p>
+                              <p className="my-auto text-light">Login</p>
                             </Button>
                           </div>
                           <div className="col-6 d-grid">
                             <Button
-                              variant="outline-warning"
+                              variant="warning"
                               onClick={() => {
                                 navigate("../sign-up");
                                 toggleOffcanvas();
@@ -448,7 +415,7 @@ const NavBar = () => {
                               className=" rounded-pill block  "
                               type="button"
                             >
-                              <p className="my-auto"> Sign Up</p>
+                              <p className="my-auto text-light"> Sign Up</p>
                             </Button>
                           </div>
                         </div>

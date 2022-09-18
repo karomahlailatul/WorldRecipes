@@ -48,7 +48,6 @@ const SignUp = () => {
     
    
   };
-
   
   useEffect(() => {
     document.title = "Sign Up | World Recipes";
