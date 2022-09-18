@@ -3,13 +3,6 @@ import React, { Fragment } from "react";
 const Footer = () => {
   return (
     <Fragment>
-      {/* <footer className=''>
-    <div className='container '>
-        <div className=''> </div>
-    <p>test</p>
-    </div>
-
-</footer> */}
       <div class=" footer-global">
         <footer class="container py-5 border-top">
           <div className="col-12 text-center mb-5">
