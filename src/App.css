@@ -38,21 +38,11 @@
   }
 }
 
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 576px) {
   body {
     display: none;
   }
 }
-
-
 
 /* 
 @media only screen and (max-width: 576px) {
@@ -73,37 +63,10 @@
 @media only screen and (min-width: 1400px) {
 } */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Home */
 .home-page .landing-page-1 {
   height: 800px;
 }
-
 
 .home-page .title-home-page {
   margin-top: 250px;
@@ -159,7 +122,6 @@
 } */
 
 @media only screen and (max-width: 576px) {
-
   .home-page .imageswipper1 {
     width: 150px;
     height: 150px !important;
@@ -172,7 +134,6 @@
 }
 
 @media only screen and (min-width: 576px) {
-
   .home-page .imageswipper1 {
     width: 500px !important;
     height: 500px !important;
@@ -185,13 +146,12 @@
 }
 
 @media only screen and (min-width: 768px) {
-
   .home-page .imageswipper1 {
-    width: 200px  !important;
+    width: 200px !important;
     height: 200px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 200px  !important;
+    width: 200px !important;
     height: 200px !important;
     object-fit: cover !important;
   }
@@ -199,11 +159,11 @@
 
 @media only screen and (min-width: 992px) {
   .home-page .imageswipper1 {
-    width: 280px  !important;
+    width: 280px !important;
     height: 280px !important;
   }
   .home-page .img-swiper-bottom {
-    width: 280px  !important;
+    width: 280px !important;
     height: 280px !important;
     object-fit: cover !important;
   }
@@ -211,7 +171,7 @@
 
 @media only screen and (min-width: 1200px) {
   .home-page .imageswipper1 {
-    width: 340px  !important;
+    width: 340px !important;
     height: 340px !important;
   }
   .home-page .img-swiper-bottom {
@@ -223,7 +183,7 @@
 
 @media only screen and (min-width: 1400px) {
   .home-page .imageswipper1 {
-    width: 400px  !important;
+    width: 400px !important;
     height: 400px !important;
   }
   .home-page .img-swiper-bottom {
@@ -233,52 +193,10 @@
   }
 }
 
-
 span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: rgba(247, 197, 60, 0.75) !important;;
+  background-color: rgba(247, 197, 60, 0.75) !important;
   opacity: 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* sign-up */
 .sign-up-page .bg-picture {
@@ -300,36 +218,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   padding-right: 50px; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* sign-in */
 .sign-in-page .bg-picture {
   width: 100%;
@@ -349,52 +237,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   padding-right: 50px; */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*  Page not Found */
 .page-not-found {
   margin-top: 200px;
@@ -411,6 +253,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   }
 }
 
+<<<<<<< Updated upstream
 
 @media only screen and (min-width: 768px) {
   .page-not-found .text-not-found {
@@ -496,64 +339,13 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 
 
 
+=======
+>>>>>>> Stashed changes
 /* footer */
 .footer-global {
   height: 245px;
   background: #efc81a;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Profile */
 .utama {
@@ -585,67 +377,6 @@ footer .bottom ul li a {
   text-decoration: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Navigation Bar */
 .navbar-page .btn-search {
   color: gray;
@@ -673,7 +404,7 @@ footer .bottom ul li a {
   text-align: center;
 }
 
- .ShadowBox {
+.ShadowBox {
   box-shadow: 1px 1px 5px grey;
 }
 
@@ -753,6 +484,7 @@ footer .bottom ul li a {
   height: 45px;
 }
 
+<<<<<<< Updated upstream
 
 
 .form-check-input:checked{
@@ -764,4 +496,48 @@ footer .bottom ul li a {
   outline: 0;
   border: 0;
   box-shadow: 0 0 0 0.1rem rgba(255, 196, 0, 0.911) !important;
+=======
+/* detail recipes  */
+
+@media only screen and (max-width: 576px) {
+  .detail-resep-page .img-promotion {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .detail-resep-page .img-promotion {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .detail-resep-page .img-promotion {
+    height: 350px;
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .detail-resep-page .img-promotion {
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .detail-resep-page .img-promotion {
+    height: 500px;
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .detail-resep-page .img-promotion {
+    height: 500px;
+    width: 500px;
+  }
+>>>>>>> Stashed changes
 }

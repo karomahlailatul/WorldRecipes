@@ -1,10 +1,9 @@
-import React, { useState, Fragment } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { Fragment } from "react";
+
 import MyRecipe from "../../component/myRecipe/index";
 import SavedRecipe from "../../component/savedRecipe/index";
 import LikedRecipe from "../../component/likedRecipe/index";
-import Footer from "../../component/footer/index";
-import Navbar from "../../component/navbar/index";
+
 import imgProfile from "../../assets/images/profile.png";
 
 import ModalEdit from "../../component/modalEdit/index";

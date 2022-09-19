@@ -10,19 +10,16 @@ const DetailRecipes = () => {
     <Fragment>
       <div className="detail-resep-page">
         <div className="container">
-          <section className="profile ff-airbnb text-center mb-5">
-            <div className="d-flex justify-content-center">
-              <div className="position-relative">
-                <h1 className="mt-5">Loream Sandwich</h1>
-                <img
-                  className="img-promotion"
-                  crossOrigin="anonymous"
-                  src={require("../../assets/images/home_1.png")}
-                  alt=""
-                />
-              </div>
-            </div>
-          </section>
+          <div className="position-relative text-center">
+            <h1 className="mt-5">Loream Sandwich</h1>
+            <img
+              className="img-promotion"
+              crossOrigin="anonymous"
+              src={require("../../assets/images/home_1.png")}
+              alt=""
+            />
+          </div>
+
           <div className="container">
             <h2 className="text cover mt-5">Ingredients</h2>
             <h5>- 2 Eggs</h5>
