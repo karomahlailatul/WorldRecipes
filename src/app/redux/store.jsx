@@ -13,7 +13,10 @@ import SignUpUserReducer from "./Slice/SignUpUserSlice"
 
 import ProfileUserReducer from "./Slice/ProfileUserSlice"
 
-// import SearchProductReducer from "./Slice/SearchProductSlice"
+import SearchRecipesReducer from "./Slice/SearchRecipesSlice"
+
+
+import RecipesUserReducer from "./Slice/RecipesUserSlice"
 
 
 export default configureStore({
@@ -21,9 +24,11 @@ export default configureStore({
 
         HomeNew: HomeNewReducer,
         HomePopular: HomePopularReducer,
+        
+        SearchRecipes :  SearchRecipesReducer ,
+
         // CategoryProduct : CategoryProductReducer,
 
-        // SearchProduct :  SearchProductReducer ,
         ProfileUser: ProfileUserReducer,
 
         // ProductBySearch: ProductBySearchReducer,
@@ -32,6 +37,7 @@ export default configureStore({
         SignIn: SignInReducer,
         SignUpUser: SignUpUserReducer,
 
+        RecipesUser : RecipesUserReducer,
 
 
     }

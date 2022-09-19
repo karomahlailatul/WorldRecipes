@@ -511,3 +511,180 @@ label.form-check-label:focus,
     width: 500px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Search Recipes */
+
+@media only screen and (max-width: 576px) {
+  .out-img-product {
+    width: 100%;
+    height: 100%;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .title-product {
+    white-space: nowrap;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .out-img-product {
+    width: 220px;
+    height: 220px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 220px;
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .title-product {
+    white-space: nowrap;
+    width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .out-img-product {
+    width: 190px;
+    height: 190px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 190px;
+    max-height: 190px;
+    object-fit: cover;
+  }
+
+  .title-product {
+    white-space: nowrap;
+    width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .out-img-product {
+    width: 190px;
+    height: 190px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 190px;
+    max-height: 190px;
+    object-fit: cover;
+  }
+
+  .title-product {
+    white-space: nowrap;
+    width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .out-img-product {
+    width: 140px;
+    height: 140px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 140px;
+    max-height: 140px;
+    object-fit: cover;
+  }
+
+  .title-product {
+    white-space: nowrap;
+    width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .out-img-product {
+    width: 170px;
+    height: 170px;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .img-product {
+    max-width: 170px;
+    max-height: 170px;
+    object-fit: cover;
+  }
+
+}
+
+
+
+
+
+
+
+/* Pagination */
+.pagination .active .page-link {
+  color : var(--bs-white) !important;
+  background-color: var(--bs-warning) ;
+  border-color: var(--bs-warning) ;
+}
+
+.pagination .page-link {
+  color : var(--bs-warning) !important;
+  background-color: var(--bs-white) ;
+  border-color: var(--bs-warning) ;
+}
+
+.pagination .page-link:hover {
+  color : var(--bs-white) !important;
+  background-color: var(--bs-warning) ;
+  border-color: var(--bs-warning) ;
+}
+
+.pagination .page-link:hover:focus {
+  /* color: rgba(0, 0, 0, .85); */
+  /* background-color: transparent; */
+  box-shadow: 0px 0px 5px 2px rgba(247, 197, 60, 0.75) !important;
+}

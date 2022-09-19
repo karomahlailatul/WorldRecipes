@@ -100,7 +100,7 @@ const NavBar = () => {
     <span>
       <img
         className="pictureThumbnails"
-        referrerpolicy="no-referrer" 
+        referrerPolicy="no-referrer" 
         src={
           user_picture === null || user_picture === undefined ?
           PhotoEmpty
@@ -132,7 +132,7 @@ const NavBar = () => {
               }}
               className="col-lg-3 col-md-3 col-sm-3  cursor-pointer"
             >
-              <img  referrerpolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
+              <img  referrerPolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
             </div>
           </Navbar.Brand>
           <Navbar.Toggle onClick={toggleOffcanvas} aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -149,7 +149,7 @@ const NavBar = () => {
                   }}
                   className="col-lg-3 col-md-3 col-sm-3 link-redirect"
                 >
-                  <img  referrerpolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
+                  <img  referrerPolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
                 </div>
                 <div className="btn-close-offcanvas " onClick={toggleOffcanvas}></div>
               </Offcanvas.Title>
@@ -183,7 +183,7 @@ const NavBar = () => {
                         <div className="d-grid ">
                           <div className="col-12 d-flex mt-4">
                             <div className="col-4 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
-                              <img  referrerpolicy="no-referrer" 
+                              <img  referrerPolicy="no-referrer" 
                                 className="photoSide"
                                 // src={user_picture} alt=""
                                 src={

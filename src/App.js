@@ -10,7 +10,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import DetailResep from "./pages/DetailRecipes";
 import MyRecipe from "./pages/MyRecipes";
-
+import SearchRecipes from "./pages/SearchRecipes";
 
 //component
 import Footer from "./component/footer";
@@ -41,6 +41,9 @@ function App() {
 
           <Route path="/profile" element={<RequireAuth> <Profile /> </RequireAuth>} />
           <Route path="/profile/my-recipes" element={<RequireAuth>  <MyRecipe />  </RequireAuth>} />
+
+
+          <Route path="/recipes" element={<SearchRecipes />} />
 
           <Route path="/details-recipes" element={<DetailResep />} />
 

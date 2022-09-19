@@ -51,7 +51,7 @@ const Profile = () => {
           <div className="profile ff-airbnb text-center mb-5">
             <div className="d-flex justify-content-center">
               <div className="position-relative">
-                <img  referrerpolicy="no-referrer" className="picture-profile rounded-circle" src={user_picture === null || user_picture === undefined ? PhotoEmpty : user_picture} alt="" />
+                <img  referrerPolicy="no-referrer" className="picture-profile rounded-circle" src={user_picture === null || user_picture === undefined ? PhotoEmpty : user_picture} alt="" />
               </div>
             </div>
             <div className="d-flex mt-4 text-center justify-content-center">
