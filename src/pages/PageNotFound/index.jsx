@@ -8,7 +8,7 @@ const PageNotFound = () => {
           <div className="col-12 d-flex justify-content-center">
             <img src={require("../../assets/icons/icon-2.png")} alt=""></img>
             <div className="d-flex align-items-center">
-              <p className="text-not-found ">404|</p>
+              <p className="text-not-found">404|</p>
               <p className="text-not-found">Page Not Found</p>
             </div>
           </div>

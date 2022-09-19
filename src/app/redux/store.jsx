@@ -11,8 +11,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import SignInReducer from "./Slice/SignInSlice"
 import SignUpUserReducer from "./Slice/SignUpUserSlice"
 
-// import ProfileUserReducer from "./Slice/ProfileUserSlice"
-// import ProfileSellerReducer from "./Slice/ProfileSellerSlice"
+import ProfileUserReducer from "./Slice/ProfileUserSlice"
 
 // import SearchProductReducer from "./Slice/SearchProductSlice"
 
@@ -25,14 +24,15 @@ export default configureStore({
         // CategoryProduct : CategoryProductReducer,
 
         // SearchProduct :  SearchProductReducer ,
-        // ProfileUser: ProfileUserReducer,
-        // ProfileSeller: ProfileSellerReducer,
+        ProfileUser: ProfileUserReducer,
 
         // ProductBySearch: ProductBySearchReducer,
         // ProductBySeller: ProductBySellerReducer,
 
         SignIn: SignInReducer,
         SignUpUser: SignUpUserReducer,
+
+
 
     }
 });

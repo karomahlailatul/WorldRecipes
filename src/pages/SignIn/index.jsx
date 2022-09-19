@@ -1,18 +1,19 @@
-import React, { useState,useEffect, Fragment } from "react";
-import { useNavigate ,Link} from "react-router-dom";
+import React, { useState, useEffect, Fragment } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { postSignIn } from "../../app/redux/Slice/SignInSlice";
 
+import { toast } from "react-toastify";
+
 const SignIn = () => {
-  
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   const [data, setData] = useState({
     email: "",
-    password: "" ,
+    password: "",
     // role: "" || "user",
   });
 
@@ -27,12 +28,11 @@ const SignIn = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    dispatch(postSignIn(data))
+    if (document.getElementById("agree-user").checked) {
+      dispatch(postSignIn(data))
       .unwrap()
 
       .then((item) => {
-        // console.log(item)
-        // console.log(item.statusCode)
         if (item.statusCode === 201) {
           setTimeout(() => {
             navigate("../home");
@@ -41,6 +41,9 @@ const SignIn = () => {
           console.log("Sign In Failed");
         }
       });
+    } else {
+      toast.warning("Please Agree terms and conditions", { autoClose: 2000, toastId: "warningAgreeUser" });
+    }
   };
 
   useEffect(() => {
@@ -50,53 +53,55 @@ const SignIn = () => {
   return (
     <Fragment>
       <div className="sign-in-page d-flex justify-content-center align-items-center">
-      <div className="container col-12">
+        <div className="container col-12">
           <div className="mt-5">
-           <Link className="text-muted text-decoration-none" to={"../home"}>{"<"}&nbsp;Back Home</Link>
-          </div>
+            <Link className="text-muted text-decoration-none" to={"../home"}>
+              {"<"}&nbsp;Back Home
+            </Link>
+            </div>
           <div>
-          <div className="d-flex col-xl-9 col-lg-9 col-md-12 col-sm-12 container justify-content-center">
-            <form onSubmit={handleLogin} className="w-100 form-sign-in">
-              <div className="text-center my-5">
-              <h2 className="text-warning">Welcome</h2>
-              <h6 className="text-muted">Log in into your exiting account</h6>
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="form-label">
-                  Email address
-                </label>
-                <input name="email" type="text" className="form-control form-input" id="email" placeholder="Enter Email address" onChange={handleChange}/>
-              </div>
-             
-              <div>
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <input name="password" type="password" className="form-control form-input" id="password" placeholder="Enter Password" onChange={handleChange}/>
-              </div>
-             
-              <div className="d-flex justify-content-start my-2">
-                <input className="form-check-input" type="checkbox" value="" id="agree-user" />
+            <div className="d-flex col-xl-9 col-lg-9 col-md-12 col-sm-12 container justify-content-center">
+              <form onSubmit={handleLogin} className="w-100 form-sign-in">
+                <div className="text-center my-5">
+                  <h2 className="text-warning">Welcome</h2>
+                  <h6 className="text-muted">Log in into your exiting account</h6>
+                </div>
 
-                <label className="form-check-label" htmlFor="agree-user">
-                  I agree to terms & conditions
-                </label>
-              </div>
-              <div className="d-flex justify-content-center">
-                <button type="submit" className="btn btn-warning my-2">
-                  Log in Account
-                </button>
-              </div>
-              <div className="col-12 d-flex justify-content-center my-2">
-                <p className="text-muted">Don’t have an account?</p>
-                <Link className="text-warning text-decoration-none" to={"../SignUp"}>&nbsp;Sign Up Here</Link>
-              </div>
-            </form>
-          </div></div>
+                <div>
+                  <label htmlFor="email" className="form-label">
+                    Email address
+                  </label>
+                  <input name="email" type="text" className="form-control form-input" id="email" placeholder="Enter Email address" onChange={handleChange} />
+                </div>
+
+                <div>
+                  <label htmlFor="password" className="form-label">
+                    Password
+                  </label>
+                  <input name="password" type="password" className="form-control form-input" id="password" placeholder="Enter Password" onChange={handleChange} />
+                </div>
+
+                <div className="d-flex justify-content-start my-2">
+                  <input className="form-check-input" type="checkbox" value="" id="agree-user" />
+                  <label className="form-check-label" htmlFor="agree-user">
+                  &nbsp;I agree to terms & conditions
+                  </label>
+                </div>
+                <div className="d-flex justify-content-center">
+                  <button type="submit" className="btn btn-warning my-2 text-light">
+                    Log in Account
+                  </button>
+                </div>
+                <div className="col-12 d-flex justify-content-center my-2">
+                  <p className="text-muted">Don’t have an account?</p>
+                  <Link className="text-warning text-decoration-none" to={"../sign-up"}>
+                    &nbsp;Sign Up Here
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-
-
       </div>
     </Fragment>
   );

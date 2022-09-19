@@ -295,9 +295,9 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 }
 
 .sign-up-page .form-sign-up {
-  margin-top: 200px;
-  padding-left: 50px;
-  padding-right: 50px;
+  margin-top: 125px;
+  /* padding-left: 50px;
+  padding-right: 50px; */
 }
 
 
@@ -401,11 +401,52 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   margin-bottom: 200px;
 }
 
-.page-not-found .text-not-found {
-  /* margin-top: 500px; */
-  color: #efc81a !important;
-  font-size: 40px;
+
+@media only screen and (min-width: 576px) {
+  .page-not-found .text-not-found {
+    /* margin-top: 500px; */
+    color: #efc81a !important;
+    font-size: 35px !important ;
+    font-weight: bold;
+  }
 }
+
+
+@media only screen and (min-width: 768px) {
+  .page-not-found .text-not-found {
+    /* margin-top: 500px; */
+    color: #efc81a !important;
+    font-size: 35px !important ;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .page-not-found .text-not-found {
+    /* margin-top: 500px; */
+    color: #efc81a !important;
+    font-size: 40px !important ;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .page-not-found .text-not-found {
+    /* margin-top: 500px; */
+    color: #efc81a !important;
+    font-size: 40px !important ;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .page-not-found .text-not-found {
+    /* margin-top: 500px; */
+    color: #efc81a !important;
+    font-size: 45px !important ;
+    font-weight: bold;
+  }
+} 
 
 
 
@@ -690,6 +731,8 @@ footer .bottom ul li a {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(247, 197, 60, 0.75);
 }
 
 .dropdown-toggle::after {
@@ -708,4 +751,17 @@ footer .bottom ul li a {
 
 .logo-toggle-navbar {
   height: 45px;
+}
+
+
+
+.form-check-input:checked{
+  background-color: rgba(255, 196, 0, 0.911) !important;
+  border: 0;
+}
+.form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+  color: black;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 0 0 0.1rem rgba(255, 196, 0, 0.911) !important;
 }

@@ -63,6 +63,7 @@ const HomePopularRecipes = () => {
               modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
               className="swiperHome1"
             >
+              
               <SwiperSlide>
                 <div className="col-12 d-xl-flex d-lg-flex  d-md-flex d-sm-grid">
                   <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
@@ -101,6 +102,7 @@ const HomePopularRecipes = () => {
                   </div>
                 </div>
               </SwiperSlide>
+
             </Swiper>
           </div>
         </div>

@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <Fragment>
       <div className="home-page">
-        <div className="container col-12">
+        <div className="container mt-3 col-12">
         <HomePopularRecipes />
         <HomeNewRecipes />
         <HomeCategoryRecipes />

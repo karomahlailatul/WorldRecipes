@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-import "swiper/css/bundle";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { Provider } from "react-redux";

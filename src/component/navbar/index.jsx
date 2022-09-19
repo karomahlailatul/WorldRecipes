@@ -3,9 +3,9 @@ import React, { useState, Fragment, useEffect } from "react";
 import logo from "../../assets/icons/logo_navbar.png";
 import { useNavigate, useSearchParams, useLocation ,Link} from "react-router-dom";
 
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-// import { getProfileUser } from "../../app/redux/Slice/ProfileUserSlice";
+import { getProfileUser } from "../../app/redux/Slice/ProfileUserSlice";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -20,11 +20,9 @@ import PhotoEmpty from "../../assets/images/icons/ico-user.svg";
 const NavBar = () => {
   const isAuth = localStorage.getItem("token");
 
-  // let location = useLocation();
-
   const navigate = useNavigate();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
@@ -47,24 +45,26 @@ const NavBar = () => {
     // }
   };
 
-  // const dispatchProfileUser = () => {
-  //   dispatch(getProfileUser());
-  // };
+  const dispatchProfileUser = () => {
+    dispatch(getProfileUser())
+    .unwrap()
+  };
 
-  // const {
-  //   user_id,
-  //   // user_username,
-  //   user_email,
-  //   // user_name,
-  //   // user_gender,
-  //   // user_phone,
-  //   // user_date_of_birth,
-  //   user_picture,
-  //   // user_shipping_address,
-  //   // user_role,
-  //   // user_created_on,
-  //   // user_updated_on
-  // } = useSelector((state) => state.ProfileUser);
+  const {
+    // ProfileUser
+    // user_id,
+    // user_username,
+    // user_email,
+    // user_name,
+    // user_gender,
+    // user_phone,
+    // user_date_of_birth,
+    user_picture,
+    // user_shipping_address,
+    // user_role,
+    // user_created_on,
+    // user_updated_on
+  } = useSelector((state) => state.ProfileUser);
 
   const expand = "lg";
 
@@ -102,19 +102,18 @@ const NavBar = () => {
         className="pictureThumbnails"
         crossOrigin="anonymous"
         src={
-          // user_picture === null || user_picture === undefined ?
+          user_picture === null || user_picture === undefined ?
           PhotoEmpty
-          //  : user_picture
+           : user_picture
         }
         alt=""
       />
 
-      {/* <img className="pictureThumbnails" crossOrigin="anonymous" src={user_picture} alt="" /> */}
     </span>
   );
 
   useEffect(() => {
-    // dispatchProfileUser();
+    dispatchProfileUser();
     window.addEventListener("resize", handleWindowResize);
     return () => {
       window.removeEventListener("resize", handleWindowResize);
@@ -124,7 +123,7 @@ const NavBar = () => {
 
   return (
     <Fragment>
-      <Navbar key={expand} bg="white" expand={expand} className="mb-3 shadow-sm">
+      <Navbar key={expand} bg="white" expand={expand} className="shadow-sm">
         <Container fluid="sm">
         <Navbar.Brand className="me-5">
             <div
@@ -168,7 +167,7 @@ const NavBar = () => {
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
-                                  navigate("../product?" + searchParams);
+                                  navigate("../recipes?" + searchParams);
                                   toggleOffcanvas();
                                 }}
                                 className="bg-transparent border-0 rounded-pill btn-search"
@@ -189,9 +188,9 @@ const NavBar = () => {
                                 crossOrigin="anonymous"
                                 // src={user_picture} alt=""
                                 src={
-                                  // user_picture === null || user_picture === undefined ?
+                                  user_picture === null || user_picture === undefined ?
                                   PhotoEmpty
-                                  //  : user_picture
+                                   : user_picture
                                 }
                                 alt=""
                               />
@@ -216,7 +215,7 @@ const NavBar = () => {
                               <Button
                                 variant="outline-warning"
                                 onClick={() => {
-                                  navigate("../profile/seller");
+                                  navigate("../profile/my-recipes");
                                   toggleOffcanvas();
                                 }}
                                 className=" rounded-pill block  "
@@ -258,7 +257,7 @@ const NavBar = () => {
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
-                                  navigate("../product?" + searchParams);
+                                  navigate("../recipes?" + searchParams);
                                 }}
                                 className="bg-transparent border-0 rounded-pill btn-search"
                                 type="submit"
@@ -300,7 +299,7 @@ const NavBar = () => {
                               <NavDropdown.Divider />
                               <NavDropdown.Item
                                 onClick={() => {
-                                  navigate("../profile/seller");
+                                  navigate("../profile/my-recipes");
                                 }}
                               >
                                 My Recipes
@@ -333,7 +332,7 @@ const NavBar = () => {
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
-                                  navigate("../product?" + searchParams);
+                                  navigate("../recipes?" + searchParams);
                                   toggleOffcanvas();
                                 }}
                                 className="bg-transparent border-0 rounded-pill btn-search"
@@ -381,7 +380,7 @@ const NavBar = () => {
                               <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
-                                  navigate("../product?" + searchParams);
+                                  navigate("../recipes?" + searchParams);
                                 }}
                                 className="bg-transparent border-0 rounded-pill btn-search"
                                 type="submit"
