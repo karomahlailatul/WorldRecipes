@@ -16,6 +16,9 @@ import AddRecipe from "./pages/AddRecipes";
 import Footer from "./component/footer";
 import Navbar from "./component/navbar";
 
+import ScrollToTop from "./component/ScrollToTop";
+import RequireAuth from "./component/RequireAuth";
+
 //modules
 import { ToastContainer } from "react-toastify";
 
@@ -23,24 +26,30 @@ function App() {
   let location = useLocation();
   return (
     <>
-      {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Navbar />}
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/home" replace="true" />} />
-        <Route path="/home" element={<Home />} />
+      <ScrollToTop>
+        {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Navbar />}
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/add-recipes" element={<AddRecipe />} />
-        <Route path="/details-recipes" element={<DetailResep />} />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace="true" />} />
+          <Route path="/home" element={<Home />} />
 
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
+          <Route path="*" element={<PageNotFound />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
 
-      <ToastContainer />
-      {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Footer />}
+          <Route path="/profile" element={<RequireAuth> <Profile /> </RequireAuth>} />
+          <Route path="/add-recipes" element={<RequireAuth>  <AddRecipe />  </RequireAuth>} />
+
+          <Route path="/details-recipes" element={<DetailResep />} />
+
+        </Routes>
+
+        <ToastContainer />
+        {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Footer />}
+
+      </ScrollToTop>
     </>
   );
 }

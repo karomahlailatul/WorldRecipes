@@ -201,7 +201,7 @@ const NavBar = () => {
                             <Button
                               variant="outline-warning"
                               onClick={() => {
-                                navigate("../profile/user");
+                                navigate("../profile");
                                 toggleOffcanvas();
                               }}
                               className=" rounded-pill block  "
@@ -291,7 +291,7 @@ const NavBar = () => {
                               <NavDropdown.Divider /> */}
                               <NavDropdown.Item
                                 onClick={() => {
-                                  navigate("../profile/user");
+                                  navigate("../profile");
                                 }}
                               >
                                 My Profile
