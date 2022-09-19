@@ -6,18 +6,21 @@ import "react-toastify/dist/ReactToastify.css";
 export const postSignUpUser = createAsyncThunk("SignUpUser/postSignUpUser", async (dataUser) => {
   try {
     const response = await axios.post(process.env.REACT_APP_API_BACKEND + "users/register", JSON.stringify(dataUser), {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
     });
 
     if (response.data.statusCode === 201) {
-      toast.success("Sign Up Success. wait a few seconds", { autoClose: 2000  ,toastId: "successSignUp"});
+      toast.success("Sign Up Success. wait a few seconds", { autoClose: 2000, toastId: "successSignUp" });
     } else {
-      toast.warning(response.data.message, { autoClose: 2000  ,toastId: "warningSignUp"});
+      toast.warning(response.data.message, { autoClose: 2000, toastId: "warningSignUp" });
     }
 
     return response.data;
   } catch (error) {
-    toast.warning(error.response.data.message, { autoClose: 2000 ,toastId: "errorSignUp" });
+    toast.warning(error.response.data.message, { autoClose: 2000, toastId: "errorSignUp" });
   }
 });
 

@@ -27,7 +27,7 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     });
 
-    console.log(dataUser);
+    // console.log(dataUser);
   };
 
   const handleCreate = async (e) => {

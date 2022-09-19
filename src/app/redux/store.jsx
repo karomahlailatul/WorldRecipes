@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-// import HomeProductNewReducer from "./Slice/HomeProductNewSlice";
-// import HomeProductPopularReducer from "./Slice/HomeProductPopularSlice";
+import HomeNewReducer from "./Slice/HomeNewSlice";
+import HomePopularReducer from "./Slice/HomePopularSlice";
 
 // import CategoryProductReducer from "./Slice/CategoryProductSlice";
 
@@ -19,8 +19,8 @@ import ProfileUserReducer from "./Slice/ProfileUserSlice"
 export default configureStore({
     reducer: {
 
-        // HomeProductNew: HomeProductNewReducer,
-        // HomeProductPopular: HomeProductPopularReducer,
+        HomeNew: HomeNewReducer,
+        HomePopular: HomePopularReducer,
         // CategoryProduct : CategoryProductReducer,
 
         // SearchProduct :  SearchProductReducer ,

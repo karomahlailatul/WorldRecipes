@@ -100,7 +100,7 @@ const NavBar = () => {
     <span>
       <img
         className="pictureThumbnails"
-        crossOrigin="anonymous"
+        referrerpolicy="no-referrer" 
         src={
           user_picture === null || user_picture === undefined ?
           PhotoEmpty
@@ -123,7 +123,7 @@ const NavBar = () => {
 
   return (
     <Fragment>
-      <Navbar key={expand} bg="white" expand={expand} className="shadow-sm">
+      <Navbar key={expand} bg="white" expand={expand} className="shadow-sm mb-3">
         <Container fluid="sm">
         <Navbar.Brand className="me-5">
             <div
@@ -132,7 +132,7 @@ const NavBar = () => {
               }}
               className="col-lg-3 col-md-3 col-sm-3  cursor-pointer"
             >
-              <img className="my-auto logo-toggle-navbar" src={logo} alt="" />
+              <img  referrerpolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
             </div>
           </Navbar.Brand>
           <Navbar.Toggle onClick={toggleOffcanvas} aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -149,7 +149,7 @@ const NavBar = () => {
                   }}
                   className="col-lg-3 col-md-3 col-sm-3 link-redirect"
                 >
-                  <img className="my-auto logo-toggle-navbar" src={logo} alt="" />
+                  <img  referrerpolicy="no-referrer"  className="my-auto logo-toggle-navbar" src={logo} alt="" />
                 </div>
                 <div className="btn-close-offcanvas " onClick={toggleOffcanvas}></div>
               </Offcanvas.Title>
@@ -183,9 +183,8 @@ const NavBar = () => {
                         <div className="d-grid ">
                           <div className="col-12 d-flex mt-4">
                             <div className="col-4 border border-0 rounded-3 d-flex justify-content-center align-items-center block">
-                              <img
+                              <img  referrerpolicy="no-referrer" 
                                 className="photoSide"
-                                crossOrigin="anonymous"
                                 // src={user_picture} alt=""
                                 src={
                                   user_picture === null || user_picture === undefined ?

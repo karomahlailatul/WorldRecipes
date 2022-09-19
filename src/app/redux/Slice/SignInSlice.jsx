@@ -6,7 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 export const postSignIn = createAsyncThunk("SignIn/postSignIn", async (data) => {
   try {
     const response = await axios.post(process.env.REACT_APP_API_BACKEND + "users/login", JSON.stringify(data), {
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
     });
 
     if (response.data.statusCode === 201) {

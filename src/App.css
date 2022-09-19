@@ -247,7 +247,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   .page-not-found .text-not-found {
     /* margin-top: 500px; */
     color: #efc81a !important;
-    font-size: 35px !important ;
+    font-size: 30px !important ;
     font-weight: bold;
   }
 }
@@ -256,7 +256,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   .page-not-found .text-not-found {
     /* margin-top: 500px; */
     color: #efc81a !important;
-    font-size: 35px !important ;
+    font-size: 33px !important ;
     font-weight: bold;
   }
 }
@@ -288,16 +288,39 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   }
 }
 
+
+
 /* footer */
 .footer-global {
   height: 245px;
   background: #efc81a;
 }
 
+
 /* Profile */
 .utama {
   margin-bottom: 150px;
 }
+.picture-profile{
+  height: 172px;
+  width: 172px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 196, 0, 0.911);
+}
+
+.icon-edit {
+ width: 18px ;
+ height: 18px;
+}
+
+.nav-link {
+  color: grey !important;
+}
+.nav-link.active {
+  color: black !important;
+}
+
+
 footer .bottom {
   height: 100px;
   display: flex;
@@ -384,8 +407,8 @@ footer .bottom ul li a {
 }
 
 .photoSide {
-  height: 72px;
-  width: 72px;
+  height: 120px;
+  width: 120px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid rgba(247, 197, 60, 0.75);

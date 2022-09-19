@@ -9,7 +9,7 @@ import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile";
 import DetailResep from "./pages/DetailRecipes";
-import AddRecipe from "./pages/AddRecipes";
+import MyRecipe from "./pages/MyRecipes";
 
 
 //component
@@ -40,7 +40,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
 
           <Route path="/profile" element={<RequireAuth> <Profile /> </RequireAuth>} />
-          <Route path="/add-recipes" element={<RequireAuth>  <AddRecipe />  </RequireAuth>} />
+          <Route path="/profile/my-recipes" element={<RequireAuth>  <MyRecipe />  </RequireAuth>} />
 
           <Route path="/details-recipes" element={<DetailResep />} />
 

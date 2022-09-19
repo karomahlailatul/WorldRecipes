@@ -4,12 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, Mousewheel, Keyboard, FreeMode } from "swiper";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getHomePopular } from "../../app/redux/Slice/HomePopularSlice";
+
 const HomePopularRecipes = () => {
-  useEffect(() => {
-    document.title = "World Recipes";
-  }, []);
+  const dispatch = useDispatch();
+  const { HomePopular } = useSelector((state) => state.HomePopular);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getHomePopular()).unwrap();
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -63,46 +69,20 @@ const HomePopularRecipes = () => {
               modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
               className="swiperHome1"
             >
-              
-              <SwiperSlide>
-                <div className="col-12 d-xl-flex d-lg-flex  d-md-flex d-sm-grid">
-                  <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
-                    <img className="imageswipper1" onClick={() => navigate("")} src={require("../../assets/images/home_1.png")} alt="" />
+              {HomePopular.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <div className="col-12 d-xl-flex d-lg-flex  d-md-flex d-sm-grid">
+                    <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
+                      <img referrerpolicy="no-referrer" className="imageswipper1" onClick={() => navigate("")} src={item.photo_id} alt="" />
+                    </div>
+                    <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text">
+                      <h2>{item.name}</h2>
+                      <h5>{item.description}</h5>
+                      <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light">Learn More</button>
+                    </div>
                   </div>
-                  <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text">
-                    <h2>Healthy Bone Broth Ramen (Quick & Easy)</h2>
-                    <h5>Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!</h5>
-                    <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light">Learn More</button>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="col-12 d-xl-flex d-lg-flex  d-md-flex d-sm-grid">
-                  <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
-                    <img className="imageswipper1" onClick={() => navigate("")} src={require("../../assets/images/home_1.png")} alt="" />
-                  </div>
-                  <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text">
-                    <h2>Healthy Bone Broth Ramen (Quick & Easy)</h2>
-                    <h5>Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!</h5>
-                    <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light">Learn More</button>
-                  </div>
-                </div>
-              </SwiperSlide>
-
-              <SwiperSlide>
-                <div className="col-12 d-xl-flex d-lg-flex  d-md-flex d-sm-grid">
-                  <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
-                    <img className="imageswipper1" onClick={() => navigate("")} src={require("../../assets/images/home_1.png")} alt="" />
-                  </div>
-                  <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text">
-                    <h2>Healthy Bone Broth Ramen (Quick & Easy)</h2>
-                    <h5>Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen in a hurry? That’s right!</h5>
-                    <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light">Learn More</button>
-                  </div>
-                </div>
-              </SwiperSlide>
-
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>
