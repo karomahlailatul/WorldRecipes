@@ -243,7 +243,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   margin-bottom: 200px;
 }
 
-
 @media only screen and (min-width: 576px) {
   .page-not-found .text-not-found {
     /* margin-top: 500px; */
@@ -252,8 +251,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     font-weight: bold;
   }
 }
-
-<<<<<<< Updated upstream
 
 @media only screen and (min-width: 768px) {
   .page-not-found .text-not-found {
@@ -289,58 +286,8 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     font-size: 45px !important ;
     font-weight: bold;
   }
-} 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 /* footer */
 .footer-global {
   height: 245px;
@@ -484,19 +431,20 @@ footer .bottom ul li a {
   height: 45px;
 }
 
-<<<<<<< Updated upstream
-
-
-.form-check-input:checked{
+.form-check-input:checked {
   background-color: rgba(255, 196, 0, 0.911) !important;
   border: 0;
 }
-.form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+.form-check-input:focus,
+.label::after,
+label.form-check-label:focus,
+.form-check-input::after,
+.form-check-input:not(:disabled):not(.disabled):active:focus {
   color: black;
   outline: 0;
   border: 0;
   box-shadow: 0 0 0 0.1rem rgba(255, 196, 0, 0.911) !important;
-=======
+}
 /* detail recipes  */
 
 @media only screen and (max-width: 576px) {
@@ -539,5 +487,4 @@ footer .bottom ul li a {
     height: 500px;
     width: 500px;
   }
->>>>>>> Stashed changes
 }
