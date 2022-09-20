@@ -25,10 +25,10 @@ const SearchRecipes = () => {
   let limitParam = searchParams.get("limit") || "24";
 
   console.log(keywordParam)
-  console.log(sortbyParam)
-  console.log(sortParam)
-  console.log(pageParam)
-  console.log(limitParam)
+  // console.log(sortbyParam)
+  // console.log(sortParam)
+  // console.log(pageParam)
+  // console.log(limitParam)
 
   let keyword = `search=${keywordParam}&`;
   let value = `sortby=${sortbyParam}&sort=${sortParam}&page=${pageParam}&limit=${limitParam}`;
@@ -44,18 +44,18 @@ const SearchRecipes = () => {
   } = useSelector((state) => state.SearchRecipes);
 
   // console.log(SearchRecipes);
-
+  let valueSender = ''
   useEffect(() => {
-    if (keywordParam !== null) {
-      let valueSender = keyword + value;
+    if (keywordParam === null || keywordParam === undefined) {
+      valueSender = value;
       dispatch(getSearchRecipes(valueSender)).unwrap();
     } else {
-      let valueSender = value;
+      valueSender =  keyword + value;
       dispatch(getSearchRecipes(valueSender)).unwrap();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keywordParam, value,searchParams]);
+  }, [searchParams,keywordParam, value,dispatch]);
 
   return (
     <Fragment>

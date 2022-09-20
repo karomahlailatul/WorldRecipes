@@ -28,7 +28,7 @@ function App() {
     <>
       <ScrollToTop>
         {location.pathname === "/sign-in" ||
-        location.pathname === "/sign-up" ? null : (
+          location.pathname === "/sign-up" ? null : (
           <Navbar />
         )}
 
@@ -66,11 +66,11 @@ function App() {
         </Routes>
 
         <ToastContainer />
-        {location.pathname === "/profile/my-recipes" ||
-        location.pathname === "/sign-in" ||
-        location.pathname === "/sign-up" ? null : (
-          <Footer />
-        )}
+        {
+          location.pathname === "/sign-in" ||
+            location.pathname === "/sign-up" ? null : (
+            <Footer />
+          )}
       </ScrollToTop>
     </>
   );

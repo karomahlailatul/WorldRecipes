@@ -40,6 +40,7 @@ export const getMyRecipesDetails = createAsyncThunk("MyRecipesDetails/getMyRecip
           // "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
         },
       });
+      // console.log(response.data.data[0])
       // console.log(response.data)
       return response.data.data[0];
     }

@@ -31,6 +31,7 @@ const NavBar = () => {
 
   const handleSearch = (e) => {
     setSearch(e.currentTarget.value);
+    // console.log(search)
   };
 
   const handleSearchSubmit = (e) => {
@@ -40,9 +41,9 @@ const NavBar = () => {
         keyword: search,
       });
     }
-    //   else {
-    //   setSearchParams({});
-    // }
+      else {
+      setSearchParams();
+    }
   };
 
   const dispatchProfileUser = () => {

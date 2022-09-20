@@ -25,7 +25,7 @@ import MyRecipesModalEdit from "../../component/MyRecipesModalEdit";
 
 const MyRecipes = () => {
   const token = localStorage.getItem("token");
-  
+
   const id = localStorage.getItem("id");
 
   const navigate = useNavigate();
@@ -51,6 +51,8 @@ const MyRecipes = () => {
 
   let keywordValue = `search=${keyword}&`;
   let value = `sortby=${sortBy}&sort=${sort}&page=${currentPage}&limit=${limit}`;
+
+  // console.log(keyword)
 
   const getUsers = async () => {
     if (keyword !== null || keyword !== undefined) {
@@ -79,12 +81,12 @@ const MyRecipes = () => {
   };
 
   const { valueRecipes } = useSelector((state) => state.MyRecipes);
-  console.log(valueRecipes);
+  // console.log(valueRecipes);
 
   useEffect(() => {
     getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, keyword, value]);
+  }, [keyword, value, dispatch]);
 
   const searchData = (e) => {
     e.preventDefault();
@@ -99,7 +101,7 @@ const MyRecipes = () => {
       <Pagination.Prev
         key="prev"
         onClick={(e) => {
-          if (keyword === null) {
+          if (keyword === null || keyword === undefined) {
             setCurrentPage(currentPage - 1);
           } else {
             setKeyword(keyword);
@@ -118,7 +120,7 @@ const MyRecipes = () => {
         value={page}
         active={page === currentPage}
         onClick={(e) => {
-          if (keyword === null) {
+          if (keyword === null || keyword === undefined) {
             setCurrentPage(page);
           } else {
             setKeyword(keyword);
@@ -136,7 +138,7 @@ const MyRecipes = () => {
       <Pagination.Next
         key="next"
         onClick={(e) => {
-          if (keyword === null) {
+          if (keyword === null || keyword === undefined) {
             setCurrentPage(currentPage + 1);
           } else {
             setKeyword(keyword);
@@ -151,69 +153,72 @@ const MyRecipes = () => {
     <Fragment>
       <div className="my-recipes-page">
         <div className="container mt-5 ">
-          <div className="columns">
-            <div className="column is-centered">
-              <form onSubmit={searchData}>
-                <div className="field has-addons">
-                  <div className="control is-expanded">
-                    <input type="text" className="input" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Find something here..." />
-                  </div>
-                  <div className="control">
-                    <button type="submit" className="button is-info">
-                      Search
-                    </button>
-                  </div>
-                </div>
-              </form>
-              <Table className="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">
-                      <input type="checkbox" />
-                    </th>
-                    <th scope="col">Name Recipes</th>
-                    <th scope="col">Photo</th>
-                    <th scope="col">Videos</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((item) => (
-                    <tr key={item.id}>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <p className="title-recipes-table">{item.name}</p>
-                      </td>
-                      <td>
-                        <img referrerPolicy="no-referrer" className="img-thumbnails" onClick={() => navigate("")} src={item.photo_id} alt="" />
-                        <a target="_blank" rel="noopener noreferrer" href={item.photo}>
-                          {item.photo}
-                        </a>
-                      </td>
+          <div className="col-12 justify-content-between">
+            <form onSubmit={searchData}>
+              <div className="col-10 d-flex border border-1 rounded-pill mb-2">
+                <input
+                  className="form-control rounded-pill border-0 "
+                  // defaultValue={""}
+                  onChange={(e) => {
+                    setKeyword(e.target.value);
+                  }}
+                  placeholder={`Search Product`}
+                  style={{
+                    fontSize: "1.1rem",
+                    border: "0",
+                  }}
+                ></input>
 
-                      <td>{item.videos_id}</td>
-                      <td>
-                        <p className="description-recipes-table"> {item.description}</p>
-                      </td>
-                      <td>
-                        {/* <Link to={`${item.id}`}>
-                  <button className="btn btn-primary" style={{marginRight:"10px"}}>Detail</button>
-                  </Link>
-                  <ModalEdit id={item.id} name={item.name} stock={item.stock} price={item.price} description={item.description}/>
-                  <ModalDelete id={item.id} name={item.name}/>  */}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
+                <img className="ico-search" src={searchIcon} alt="" />
+              </div>
+            </form>
+            <Table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" />
+                  </th>
+                  <th scope="col">Name Recipes</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Videos</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      <input type="checkbox" />
+                    </td>
+                    <td>
+                      <p className="title-recipes-table">{item.name}</p>
+                    </td>
+                    <td>
+                      <img referrerPolicy="no-referrer" className="img-thumbnails" onClick={() => navigate("")} src={item.photo_id} alt="" />
+                      <a target="_blank" rel="noopener noreferrer" href={item.photo}>
+                        {item.photo}
+                      </a>
+                    </td>
+
+                    <td>{item.videos_id}</td>
+                    <td>
+                      <p className="description-recipes-table"> {item.description}</p>
+                    </td>
+                    <td>
+                      <MyRecipesModalEdit id={item.id} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+
+            <div  className="d-flex justify-content-end">
               <p>
                 Total Data: {totalData} Page: {totalData ? totalPage : 0} of {totalPage}
               </p>
-              <p className="has-text-centered has-text-danger">{msg}</p>
-
+            </div>
+            <div className="d-flex justify-content-end">
               <Pagination>{items}</Pagination>
             </div>
           </div>

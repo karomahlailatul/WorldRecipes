@@ -3,21 +3,27 @@ import pen from "../../assets/images/Vector.png";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { getMyRecipes, putMyRecipes } from "../../app/redux/Slice/MyRecipesSlice";
+import { getMyRecipes,getMyRecipesDetails, putMyRecipes } from "../../app/redux/Slice/MyRecipesSlice";
 
 import PhotoEmpty from "../../assets/images/icons/ico-user.svg";
 
 function MyRecipesModalEdit({id}) {
 
-  let idproduct = id.id;
+  // let idproduct = id.id;
+
+  // console.log(id)
 
   const [preview, setPreview] = useState();
   const [newPicture, setNewPicture] = useState(null);
 
   const dispatch = useDispatch();
 
-  const dispatchProfileUser = () => {
-    dispatch(getMyRecipes()).unwrap();
+  const dispatchMyRecipes = () => {
+    dispatch(getMyRecipes(id)).unwrap();
+  };
+
+  const dispatchMyRecipesDetails = () => {
+    dispatch(getMyRecipesDetails(id)).unwrap();
   };
 
   const {
@@ -28,8 +34,9 @@ function MyRecipesModalEdit({id}) {
     recipes_description,
     recipes_category_id,
     recipes_users_id,
-  } = useSelector((state) => state.ProfileUser);
+  } = useSelector((state) => state.MyRecipes);
 
+  console.log(recipes_id)
   const [dataRecipes, setDataRecipes] = useState({
     id: recipes_id,
     name: recipes_name,
@@ -40,15 +47,16 @@ function MyRecipesModalEdit({id}) {
     users_id : recipes_users_id, 
   });
 
-  // console.log(user_role)
+
+  // // console.log(user_role)
 
   const handleChange = (e) => {
     setDataRecipes({
       ...dataRecipes,
       [e.target.name]: e.target.value,
     });
-    console.log(dataRecipes);
-    console.log(newPicture);
+    // console.log(dataRecipes);
+    // console.log(newPicture);
   };
 
   const handleUpload = (e) => {
@@ -67,12 +75,13 @@ function MyRecipesModalEdit({id}) {
     formData.append("category_id", dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
     formData.append("users_id", dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
 
-    // console.log(dataRecipes.name === undefined ? user_name : dataRecipes.name);
-    // console.log(dataRecipes.gender === undefined ? user_gender : dataRecipes.gender);
-    // console.log(dataRecipes.date_of_birth === undefined ? user_date_of_birth : dataRecipes.date_of_birth);
-    // console.log(dataRecipes.phone === undefined ? user_phone : dataRecipes.phone);
-    // console.log(dataRecipes.role === undefined ? user_role : dataRecipes.role);
-    // console.log(newPicture === undefined ? user_picture : newPicture);
+    // console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
+    // console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
+    // console.log( newPicture === undefined ? recipes_photo_id : newPicture);
+    // console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
+    // console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
+    // console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
+    // console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
 
     // const put_user_name = (dataRecipes.name === undefined ? user_name : dataRecipes.name);
     // const put_user_gender = (dataRecipes.gender === undefined ? user_gender : dataRecipes.gender);
@@ -81,17 +90,27 @@ function MyRecipesModalEdit({id}) {
     // const put_user_role = (dataRecipes.role === undefined ? user_role : dataRecipes.role);
     // const put_user_picture =  (newPicture === undefined ? user_picture : newPicture);
 
-    dispatch(putMyRecipes(idproduct,formData))
+    dispatch(putMyRecipes(id,formData))
       .unwrap()
       .then((item) => {
         setNewPicture();
         setPreview();
-        dispatchProfileUser();
+        dispatchMyRecipes();
+        // dispatchProfileUser();
       });
   };
 
+  
+    console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
+    console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
+    console.log( newPicture === undefined ? recipes_photo_id : newPicture);
+    console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
+    console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
+    console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
+    console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
+
   useEffect(() => {
-    dispatch(getMyRecipes());
+    dispatchMyRecipesDetails()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -102,13 +121,16 @@ function MyRecipesModalEdit({id}) {
       <div
         className="modal fade"
         id="modal-edit"
-        // data-bs-backdrop="static"
+        data-bs-backdrop="static"
         tabIndex="-1"
         aria-labelledby="modal-edit"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-xl">
-          <form onSubmit={handleUpdate}>
+          <form 
+          onSubmit={
+            handleUpdate  }
+            >
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -127,38 +149,35 @@ function MyRecipesModalEdit({id}) {
               </div>
 
               <div className="modal-body">
+               
+                <label className="d-flex justify-content-start mb-1">ID Recipes :</label>
+                <input autoComplete="off" className="form-control " type="text" placeholder="ID" name="id" defaultValue={recipes_id} disabled onChange={handleChange} />
+
+                <label className="d-flex justify-content-start mt-3  mb-1">User ID</label>
+                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={recipes_users_id} onChange={handleChange} />
+                
+                <label className="d-flex justify-content-start mt-3 mb-1">Name Recipes</label>
+                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={recipes_name} onChange={handleChange} />
+                
+                <label className="d-flex justify-content-start mt-3  mb-1">Photo</label>
                 <div className="d-flex justify-content-center">
                   <div className="position-relative">
-                    <img className="picture-profile rounded-circle" src={preview === undefined || preview === null ? (recipes_photo_id === null || recipes_photo_id === undefined ? PhotoEmpty : recipes_photo_id) : preview} alt="" />
+                    <img className="picture-profile " src={preview === undefined || preview === null ? (recipes_photo_id === null || recipes_photo_id === undefined ? PhotoEmpty : recipes_photo_id) : preview} alt="" />
                   </div>
                 </div>
+                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPicture === undefined ? recipes_photo_id : newPicture} name="photo" onChange={handleUpload} />
 
-                <label className="d-flex justify-content-start mt-3  mb-1">Picture</label>
-                <input className="form-control" type="file" placeholder="photo" defaultValue={newPicture === undefined ? recipes_photo_id : newPicture} name="photo" onChange={handleUpload} />
-
-                <label className="d-flex justify-content-start mt-3 mb-1">Email :</label>
-
-                <input autoComplete="off" className="form-control " type="text" placeholder="Email" name="Email" defaultValue={recipes_id} disabled onChange={handleChange} />
-
-                <label className="d-flex justify-content-start mt-3 mb-1">Name</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Name" name="name" defaultValue={recipes_name} onChange={handleChange} />
+               
+                <label className="d-flex justify-content-start mt-3  mb-1">Videos</label>
+                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={recipes_videos_id} onChange={handleChange} />
                 
-                <label className="d-flex justify-content-start mt-3  mb-1">Phone</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Phone Number" name="phone" defaultValue={recipes_description} onChange={handleChange} />
+                <label className="d-flex justify-content-start mt-3  mb-1">Description</label>
+                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={recipes_description} onChange={handleChange} />
 
-                <label className="d-flex justify-content-start mt-3  mb-1">Gender</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Gender" name="gender" defaultValue={recipes_videos_id} onChange={handleChange} />
-                
-                <label className="d-flex justify-content-start mt-3  mb-1">Gender</label>
+                <label className="d-flex justify-content-start mt-3  mb-1">Category id</label>
                 <input autoComplete="off" className="form-control " type="text" placeholder="Gender" name="gender" defaultValue={recipes_category_id} onChange={handleChange} />
                 
-                <label className="d-flex justify-content-start mt-3  mb-1">Gender</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Gender" name="gender" defaultValue={recipes_users_id} onChange={handleChange} />
-                
-                {/* <label className="d-flex justify-content-start mt-3  mb-1">Date of birth</label>
-
-                <input className="form-control " type="date" id="start" name="date_of_birth" defaultValue={user_date_of_birth} min="1920-01-01" max="2050-12-12" onChange={handleChange} />
-            */}
+              
               </div>
               <div className="modal-footer">
                 <button
@@ -176,10 +195,10 @@ function MyRecipesModalEdit({id}) {
                   type="submit"
                   className="btn btn-warning text-light"
                   onClick={(e) => {
-                    setTimeout(() => {
+                    // setTimeout(() => {
                       setPreview();
                       setNewPicture();
-                    }, 2500);
+                    // }, 2500);
                   }}
                 >
                   Save changes
