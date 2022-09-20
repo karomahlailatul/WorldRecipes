@@ -89,7 +89,7 @@ function ModalEdit() {
   };
 
   useEffect(() => {
-    dispatchProfileUser();
+    dispatch(getProfileUser());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -85,5 +85,5 @@ export default function MyPagination({ total, current }) {
         />);
     }
 
-    return <Pagination size="lg">{items}</Pagination>;
+    return <Pagination >{items}</Pagination>;
 }

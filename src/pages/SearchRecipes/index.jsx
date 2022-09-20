@@ -24,6 +24,12 @@ const SearchRecipes = () => {
   let pageParam = searchParams.get("page") || "1";
   let limitParam = searchParams.get("limit") || "24";
 
+  console.log(keywordParam)
+  console.log(sortbyParam)
+  console.log(sortParam)
+  console.log(pageParam)
+  console.log(limitParam)
+
   let keyword = `search=${keywordParam}&`;
   let value = `sortby=${sortbyParam}&sort=${sortParam}&page=${pageParam}&limit=${limitParam}`;
 
@@ -37,7 +43,7 @@ const SearchRecipes = () => {
     pagination_totalPage,
   } = useSelector((state) => state.SearchRecipes);
 
-  console.log(SearchRecipes);
+  // console.log(SearchRecipes);
 
   useEffect(() => {
     if (keywordParam !== null) {
@@ -49,7 +55,7 @@ const SearchRecipes = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keywordParam, value]);
+  }, [keywordParam, value,searchParams]);
 
   return (
     <Fragment>
@@ -134,14 +140,15 @@ const SearchRecipes = () => {
                 <div className="row d-flex">
                   <Fragment>
                     {SearchRecipes.map((item) => (
-                      <Link className="col-xl-4 col-lg-4 col-md-3 col-sm-3 my-2 link-product text-decoration-none" to={`../recipes/${item.id}`} key={item.id}>
+                      <Link className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none" to={`../recipes/${item.id}`} key={item.id}>
                         <Card className="container border rounded align-items-center ShadowBox">
                           <div key={item.id}>
-                            <div className="d-flex justify-content-center out-img-product">
-                              <img className="img-product" referrerPolicy="no-referrer" src={item.photo_id} alt="" />
+                            <div className="d-flex justify-content-center out-img-recipes">
+                              <img className="img-recipes" referrerPolicy="no-referrer" src={item.photo_id} alt="" />
+                           
                             </div>
-                            <h5 className="text-dark fw-bold text-truncate">{item.name}</h5>
-                            <h6 className="text-muted  text-truncate "> {item.description}</h6>
+                            <h5 className="text-dark fw-bold title-recipes">{item.name}</h5>
+                            <p className="text-muted text-description-search"> {item.description}</p>
                             <div className="d-flex justify-content-center">
                               <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">Learn More</button>
                             </div>
