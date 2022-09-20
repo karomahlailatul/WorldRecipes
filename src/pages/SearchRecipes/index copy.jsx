@@ -24,7 +24,7 @@ const SearchRecipes = () => {
   let pageParamSearch = searchParams.get("page") || "1";
   let limitParamSearch = searchParams.get("limit") || "24";
 
-  // console.log(keywordParamSearch);
+  // console.log(keywordParam)
   // console.log(sortbyParam)
   // console.log(sortParam)
   // console.log(pageParam)
@@ -44,31 +44,20 @@ const SearchRecipes = () => {
   } = useSelector((state) => state.SearchRecipes);
 
   // console.log(SearchRecipes);
-  let valueSenderSearch = "";
-
-const dispatchGetCategoryRecipes = async ()=>{
-  if (keywordParamSearch === null || keywordParamSearch === undefined) {
-    valueSenderSearch = valueSearch;
-    await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
-    // console.log(valueSenderSearch)
-    // let valueSender = keywordSearch + valueSearch;
-    // await dispatch(getSearchRecipes(valueSender)).unwrap();
-  } else 
-  // if (keywordParamSearch === null || keywordParamSearch === undefined)
-   {
-    // valueSender = valueSearch;
-    // await dispatch(getSearchRecipes(valueSender)).unwrap();
-    let valueSenderSearch = keywordSearch + valueSearch;
-    await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
-    // console.log(valueSenderSearch)
-    
-  }
-}
+  let valueSender = "";
   useEffect(() => {
-    
-    dispatchGetCategoryRecipes()
+    if (keywordParamSearch !== null || keywordParamSearch !== undefined) {
+      valueSender = keywordSearch + valueSearch;
+      // console.log(valueSender)
+      dispatch(getSearchRecipes(valueSender)).unwrap();
+    } else {
+      valueSender = valueSearch;
+      // console.log(valueSender)
+      dispatch(getSearchRecipes(valueSender)).unwrap();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, keywordParamSearch, valueSearch, dispatch]);
+  }, [keywordSearch, valueSearch, dispatch]);
 
   return (
     <Fragment>
@@ -176,7 +165,7 @@ const dispatchGetCategoryRecipes = async ()=>{
                   total={pagination_totalPage}
                   current={pagination_currentPage}
                   // onChangePage={(e) => handleChangePage}
-                  // keywordParam = {keywordParam}
+                  // keywordParamSearch= {keywordParam}
                 />
               </div>
             </div>

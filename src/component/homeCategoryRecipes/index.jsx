@@ -90,7 +90,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/asian")}
                     src={require("../../assets/images/category/african.jpg")}
                     alt=""
                   />
@@ -98,7 +98,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/european")}
                     src={require("../../assets/images/category/american-latin.jpg")}
                     alt=""
                   />
@@ -106,7 +106,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/african")}
                     src={require("../../assets/images/category/american.jpg")}
                     alt=""
                   />
@@ -114,7 +114,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/australian")}
                     src={require("../../assets/images/category/asian.jpg")}
                     alt=""
                   />
@@ -122,7 +122,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/american")}
                     src={require("../../assets/images/category/australian.jpg")}
                     alt=""
                   />
@@ -130,7 +130,7 @@ const HomeCategoryRecipes = () => {
                 <SwiperSlide>
                   <img
                     className="link-redirect img-swiper-bottom"
-                    onClick={() => navigate("../category")}
+                    onClick={() => navigate("../category/american-latin")}
                     src={require("../../assets/images/category/european.jpeg")}
                     alt=""
                   />

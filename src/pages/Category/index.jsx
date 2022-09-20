@@ -13,6 +13,7 @@ import { Form } from "react-bootstrap";
 
 const Category = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   let keywordParam = searchParams.get("keyword");
 
   let sortbyParam = searchParams.get("sortby") || "created_on";
@@ -35,7 +36,7 @@ const Category = () => {
     pagination_totalData,
     //  pagination_limit,
     pagination_totalPage,
-  } = useSelector((state) => state.SearchRecipes);
+  } = useSelector((state) => state.Category);
 
   //console.log(name + "?" + value);
   let valueSender = "";
@@ -181,36 +182,21 @@ const Category = () => {
                 <div className="row d-flex">
                   <Fragment>
                     {Category.map((item) => (
-                      <Link
-                        className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none"
-                        to={`../Category/${item.id}`}
-                        key={item.id}
-                      >
-                        <Card className="container border rounded align-items-center ShadowBox">
-                          <div key={item.id}>
-                            <div className="d-flex justify-content-center out-img-Category">
-                              <img
-                                className="img-Category"
-                                referrerPolicy="no-referrer"
-                                src={item.photo_id}
-                                alt=""
-                              />
-                            </div>
-                            <h5 className="text-dark fw-bold title-Category">
-                              {item.name}
-                            </h5>
-                            <p className="text-muted text-description-search">
-                              {" "}
-                              {item.description}
-                            </p>
-                            <div className="d-flex justify-content-center">
-                              <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">
-                                Learn More
-                              </button>
-                            </div>
-                          </div>
-                        </Card>
-                      </Link>
+                     <Link className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none" to={`../recipes/${item.id}`} key={item.id}>
+                     <Card className="container border rounded align-items-center ShadowBox">
+                       <div key={item.id}>
+                         <div className="d-flex justify-content-center out-img-recipes">
+                           <img className="img-recipes" referrerPolicy="no-referrer" src={item.photo_id} alt="" />
+                        
+                         </div>
+                         <h5 className="text-dark fw-bold title-recipes">{item.name}</h5>
+                         <p className="text-muted text-description-search"> {item.description}</p>
+                         <div className="d-flex justify-content-center">
+                           <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">Learn More</button>
+                         </div>
+                       </div>
+                     </Card>
+                   </Link>
                     ))}
                   </Fragment>
                 </div>

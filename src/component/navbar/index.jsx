@@ -333,6 +333,7 @@ const NavBar = () => {
                               <Button
                                 onClick={() => {
                                   navigate("../recipes?" + searchParams);
+                                  // setSearchParams()
                                   toggleOffcanvas();
                                 }}
                                 className="bg-transparent border-0 rounded-pill btn-search"

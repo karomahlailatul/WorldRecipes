@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getSearchRecipes = createAsyncThunk("SearchRecipes/getSearchRecipes", async (valueSender) => {
+export const getSearchRecipes = createAsyncThunk("SearchRecipes/getSearchRecipes", async (valueSenderSearch) => {
   // const response = await
   //     // (keyword
   //     // !== null ? \
@@ -25,7 +25,7 @@ export const getSearchRecipes = createAsyncThunk("SearchRecipes/getSearchRecipes
   // return result;
 
   const response = await axios
-    .get(process.env.REACT_APP_API_BACKEND + "recipes?" + valueSender, {
+    .get(process.env.REACT_APP_API_BACKEND + "recipes?" + valueSenderSearch, {
       headers: {
         // "Content-Type": "multipart/form-data",
         //   Authorization: `Bearer ${token}`,
@@ -64,15 +64,15 @@ const SearchRecipesSlice = createSlice({
     [getSearchRecipes.fulfilled]: (state, action) => {
       state.isLoading = false;
 
-      if (action.payload !== undefined) {
+      // if (action.payload !== undefined) {
         state.SearchRecipes = action.payload.data;
         state.statusCode = action.payload.statusCode;
         state.pagination_currentPage = action.payload.pagination.currentPage;
         state.pagination_totalData = action.payload.pagination.totalData;
         state.pagination_limit = action.payload.pagination.limit;
         state.pagination_totalPage = action.payload.pagination.totalPage;
-        console.log(action.payload);
-      }
+        // console.log(action.payload);
+      // }
     },
     [getSearchRecipes.rejected]: (state, action) => {
       state.isLoading = false;
