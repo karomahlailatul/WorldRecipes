@@ -26,9 +26,11 @@ function App() {
   let location = useLocation();
   return (
     <>
-
       <ScrollToTop>
-        {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Navbar />}
+        {location.pathname === "/sign-in" ||
+        location.pathname === "/sign-up" ? null : (
+          <Navbar />
+        )}
 
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace="true" />} />
@@ -39,19 +41,36 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
 
-          <Route path="/profile" element={<RequireAuth> <Profile /> </RequireAuth>} />
-          <Route path="/profile/my-recipes" element={<RequireAuth>  <MyRecipe />  </RequireAuth>} />
-
+          <Route
+            path="/profile"
+            element={
+              <RequireAuth>
+                {" "}
+                <Profile />{" "}
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profile/my-recipes"
+            element={
+              <RequireAuth>
+                {" "}
+                <MyRecipe />{" "}
+              </RequireAuth>
+            }
+          />
 
           <Route path="/recipes" element={<SearchRecipes />} />
 
-          <Route path="/details-recipes" element={<DetailResep />} />
-
+          <Route path="/recipes/:id" element={<DetailResep />} />
         </Routes>
 
         <ToastContainer />
-        {location.pathname === "/sign-in" || location.pathname === "/sign-up" ? null : <Footer />}
-
+        {location.pathname === "/profile/my-recipes" ||
+        location.pathname === "/sign-in" ||
+        location.pathname === "/sign-up" ? null : (
+          <Footer />
+        )}
       </ScrollToTop>
     </>
   );
