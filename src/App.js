@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import DetailResep from "./pages/DetailRecipes";
 import MyRecipe from "./pages/MyRecipes";
 import SearchRecipes from "./pages/SearchRecipes";
+import Category from "./pages/Category";
 
 //component
 import Footer from "./component/footer";
@@ -28,7 +29,7 @@ function App() {
     <>
       <ScrollToTop>
         {location.pathname === "/sign-in" ||
-          location.pathname === "/sign-up" ? null : (
+        location.pathname === "/sign-up" ? null : (
           <Navbar />
         )}
 
@@ -40,6 +41,8 @@ function App() {
 
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
+
+          <Route path="/category/:name" element={<Category />} />
 
           <Route
             path="/profile"
@@ -66,11 +69,10 @@ function App() {
         </Routes>
 
         <ToastContainer />
-        {
-          location.pathname === "/sign-in" ||
-            location.pathname === "/sign-up" ? null : (
-            <Footer />
-          )}
+        {location.pathname === "/sign-in" ||
+        location.pathname === "/sign-up" ? null : (
+          <Footer />
+        )}
       </ScrollToTop>
     </>
   );

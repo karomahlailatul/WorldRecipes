@@ -19,6 +19,7 @@ import RecipesUserReducer from "./Slice/RecipesUserSlice";
 
 import MyRecipesReducer from "./Slice/MyRecipesSlice";
 import DetailRecipes from "./Slice/DetailRecipesSlice";
+import CategorySlice from "./Slice/CategorySlice";
 
 export default configureStore({
   reducer: {
@@ -27,6 +28,7 @@ export default configureStore({
 
     SearchRecipes: SearchRecipesReducer,
     DetailRecipes: DetailRecipes,
+    Category: CategorySlice,
 
     // CategoryProduct : CategoryProductReducer,
 
