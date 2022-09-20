@@ -8,38 +8,37 @@ import HomePopularReducer from "./Slice/HomePopularSlice";
 // import ProductBySearchReducer from "../feature/ProductBySearchSlice.js";
 // import ProductBySellerReducer from "../feature/ProductBySellerSlice.js";
 
-import SignInReducer from "./Slice/SignInSlice"
-import SignUpUserReducer from "./Slice/SignUpUserSlice"
+import SignInReducer from "./Slice/SignInSlice";
+import SignUpUserReducer from "./Slice/SignUpUserSlice";
 
-import ProfileUserReducer from "./Slice/ProfileUserSlice"
+import ProfileUserReducer from "./Slice/ProfileUserSlice";
 
-import SearchRecipesReducer from "./Slice/SearchRecipesSlice"
+import SearchRecipesReducer from "./Slice/SearchRecipesSlice";
 
-
-import RecipesUserReducer from "./Slice/RecipesUserSlice"
+import RecipesUserReducer from "./Slice/RecipesUserSlice";
 
 import MyRecipesReducer from "./Slice/MyRecipesSlice";
+import DetailRecipes from "./Slice/DetailRecipesSlice";
 
 export default configureStore({
-    reducer: {
+  reducer: {
+    HomeNew: HomeNewReducer,
+    HomePopular: HomePopularReducer,
 
-        HomeNew: HomeNewReducer,
-        HomePopular: HomePopularReducer,
-        
-        SearchRecipes :  SearchRecipesReducer ,
+    SearchRecipes: SearchRecipesReducer,
+    DetailRecipes: DetailRecipes,
 
-        // CategoryProduct : CategoryProductReducer,
+    // CategoryProduct : CategoryProductReducer,
 
-        ProfileUser: ProfileUserReducer,
+    ProfileUser: ProfileUserReducer,
 
-        MyRecipes : MyRecipesReducer,
-        // ProductBySearch: ProductBySearchReducer,
-        // ProductBySeller: ProductBySellerReducer,
+    MyRecipes: MyRecipesReducer,
+    // ProductBySearch: ProductBySearchReducer,
+    // ProductBySeller: ProductBySellerReducer,
 
-        SignIn: SignInReducer,
-        SignUpUser: SignUpUserReducer,
+    SignIn: SignInReducer,
+    SignUpUser: SignUpUserReducer,
 
-        RecipesUser : RecipesUserReducer,
-
-    }
+    RecipesUser: RecipesUserReducer,
+  },
 });

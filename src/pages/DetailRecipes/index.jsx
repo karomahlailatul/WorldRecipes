@@ -1,32 +1,37 @@
-import React, { useState, Fragment } from "react";
-import { useNavigate, Link } from "react-router-dom";
-
-import Footer from "../../component/footer/index";
-import Navbar from "../../component/navbar/index";
+import React, { useEffect, Fragment } from "react";
 import ReactPlayer from "react-player";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getDetailRecipes } from "../../app/redux/Slice/DetailRecipesSlice";
 
 const DetailRecipes = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { DetailRecipes } = useSelector((state) => state.DetailRecipes);
+  console.log(DetailRecipes);
+
+  useEffect(() => {
+    dispatch(getDetailRecipes(id)).unwrap();
+  }, [dispatch]);
   return (
     <Fragment>
       <div className="detail-resep-page">
         <div className="container">
           <div className="position-relative text-center">
-            <h1 className="mt-5">Loream Sandwich</h1>
-            <img
-              className="img-promotion"
-              crossOrigin="anonymous"
-              src={require("../../assets/images/home_1.png")}
-              alt=""
-            />
+            <div className="DetailRecipes">
+              <h1 className="mt-5">{DetailRecipes.name}</h1>
+              <img
+                referrerPolicy="no-referrer"
+                className="img-promotion"
+                src={DetailRecipes.photo_id}
+                alt=""
+              />
+            </div>
           </div>
 
           <div className="container">
-            <h2 className="text cover mt-5">Ingredients</h2>
-            <h5>- 2 Eggs</h5>
-            <h5>- 2 Tbsp Mayonnaise</h5>
-            <h5>- 3 Slices Bread</h5>
-            <h5>- 1/3 Carton Of Cress</h5>
-            <h5>- 2-3 Slices Of Tomato Or A Lettuce Leaf</h5>
+            <h2 className="text cover mt-5">Description</h2>
+            <p className="mt-2">{DetailRecipes.description}</p>
             <h2 className="text cover mt-5">Video Step</h2>
             <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
             <div className="position-relative">

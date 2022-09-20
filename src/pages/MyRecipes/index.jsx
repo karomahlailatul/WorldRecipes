@@ -1,6 +1,19 @@
-import { Fragment, useEffect, useState, useMemo, useRef, forwardRef } from "react";
+import {
+  Fragment,
+  useEffect,
+  useState,
+  useMemo,
+  useRef,
+  forwardRef,
+} from "react";
 
-import { useTable, usePagination, useRowSelect, useGlobalFilter, useAsyncDebounce } from "react-table";
+import {
+  useTable,
+  usePagination,
+  useRowSelect,
+  useGlobalFilter,
+  useAsyncDebounce,
+} from "react-table";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,6 +23,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
+import Footer from "../../component/footer";
 
 import searchIcon from "../../assets/images/icons/search.svg";
 // import Select from "react-select";
@@ -38,7 +52,8 @@ const MyRecipes = () => {
   const [statusDisable, setStatusDisable] = useState();
 
   const [showModalDeleteSelected, setShowModalDeleteSelected] = useState(false);
-  const handleCloseModalDeleteSelected = () => setShowModalDeleteSelected(false);
+  const handleCloseModalDeleteSelected = () =>
+    setShowModalDeleteSelected(false);
   const handleShowModalDeleteSelected = () => setShowModalDeleteSelected(true);
 
   const [showModalDelete, setShowModalDelete] = useState(false);
@@ -61,7 +76,6 @@ const MyRecipes = () => {
     setDisplayButton(!diplayButton);
   };
 
-
   const getAllProduct = async () => {
     await axios
       .get(process.env.REACT_APP_API_BACKEND + "recipes/usersrecipes/" + id)
@@ -73,11 +87,15 @@ const MyRecipes = () => {
         console.log(error);
       });
   };
-  
+
   const dataTable = productSeller;
 
   // Define a default UI for filtering
-  function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
+  function GlobalFilter({
+    preGlobalFilteredRows,
+    globalFilter,
+    setGlobalFilter,
+  }) {
     const [value, setValue] = useState(globalFilter);
     const onChange = useAsyncDebounce((value) => {
       setGlobalFilter(value || undefined);
@@ -85,6 +103,7 @@ const MyRecipes = () => {
 
     return (
       <Fragment>
+        recipes
         <div className="col-12 d-flex justify-content-between">
           <div className="col-10 d-flex border border-1 rounded-pill ">
             <input
@@ -104,17 +123,32 @@ const MyRecipes = () => {
             <img className="ico-search" src={searchIcon} alt="" />
           </div>
 
-          <div className="col-2" style={{ display: dataCheckList.length === 0 ? "none" : "block" }}>
-            <button className="btn btn-danger mx-3 rounded-pill" onClick={handleShowModalDeleteSelected}>
+          <div
+            className="col-2"
+            style={{ display: dataCheckList.length === 0 ? "none" : "block" }}
+          >
+            <button
+              className="btn btn-danger mx-3 rounded-pill"
+              onClick={handleShowModalDeleteSelected}
+            >
               Delete
             </button>
-            <Modal show={showModalDeleteSelected} onHide={handleCloseModalDeleteSelected} animation={false}>
+            <Modal
+              show={showModalDeleteSelected}
+              onHide={handleCloseModalDeleteSelected}
+              animation={false}
+            >
               <Modal.Header closeButton>
                 <Modal.Title>Delete</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Are sure want to delete selected product ?</Modal.Body>
+              <Modal.Body>
+                Are sure want to delete selected product ?
+              </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseModalDeleteSelected}>
+                <Button
+                  variant="secondary"
+                  onClick={handleCloseModalDeleteSelected}
+                >
                   Close
                 </Button>
                 <Button variant="danger" onClick={handleDeleteSelected}>
@@ -136,19 +170,26 @@ const MyRecipes = () => {
         Cell: (item) => {
           return (
             <Fragment>
-              <h6 className="text-dark fw-bold title-recipes-table ">{item.row.original.name}</h6>
+              <h6 className="text-dark fw-bold title-recipes-table ">
+                {item.row.original.name}
+              </h6>
             </Fragment>
           );
         },
       },
-      
+
       {
         Header: "Photo",
         accessor: "photo_id",
         Cell: (item) => {
           return (
             <Fragment>
-              <img className="img-thumbnails"  referrerPolicy="no-referrer"  src={item.row.original.photo_id} alt="" />
+              <img
+                className="img-thumbnails"
+                referrerPolicy="no-referrer"
+                src={item.row.original.photo_id}
+                alt=""
+              />
             </Fragment>
           );
         },
@@ -159,18 +200,27 @@ const MyRecipes = () => {
         Cell: (item) => {
           return (
             <Fragment>
-              <img className="img-thumbnails"  referrerPolicy="no-referrer"  src={item.row.original.photo_id} alt="" />
+              <img
+                className="img-thumbnails"
+                referrerPolicy="no-referrer"
+                src={item.row.original.photo_id}
+                alt=""
+              />
             </Fragment>
           );
         },
       },
       {
         Header: "Description",
-        accessor: "description", 
+        accessor: "description",
         Cell: (item) => {
-          return <Fragment>
-            <p className="description-recipes-table ">{item.row.original.description}</p>
-            </Fragment >;
+          return (
+            <Fragment>
+              <p className="description-recipes-table ">
+                {item.row.original.description}
+              </p>
+            </Fragment>
+          );
         },
       },
       {
@@ -179,68 +229,94 @@ const MyRecipes = () => {
         Cell: (item) => {
           return (
             <Fragment>
-            <div className="d-flex justify-content-center">
-              <button
-                className="btn btn btn-warning  text-light  rounded-pill"
-                onClick={(e) => {
-                  const getDetailProduct = async () => {
-                    await axios
-                      .get(process.env.REACT_APP_API_BACKEND + "product/" + item.row.original.id)
-                      .then((res) => {
-                        setUpdateProductSeller(res.data.data[0]);
+              <div className="d-flex justify-content-center">
+                <button
+                  className="btn btn btn-warning  text-light  rounded-pill"
+                  onClick={(e) => {
+                    const getDetailProduct = async () => {
+                      await axios
+                        .get(
+                          process.env.REACT_APP_API_BACKEND +
+                            "product/" +
+                            item.row.original.id
+                        )
+                        .then((res) => {
+                          setUpdateProductSeller(res.data.data[0]);
 
-                        setTags(res.data.data[0].category_id);
+                          setTags(res.data.data[0].category_id);
 
-                        setConditionNew(res.data.data[0].condition.toString() === "new" ? true : false);
-                        setConditionUsed(res.data.data[0].condition.toString() === "used" ? true : false);
+                          setConditionNew(
+                            res.data.data[0].condition.toString() === "new"
+                              ? true
+                              : false
+                          );
+                          setConditionUsed(
+                            res.data.data[0].condition.toString() === "used"
+                              ? true
+                              : false
+                          );
 
-                        setStatusEnable(res.data.data[0].status.toString() === "enable" ? true : false);
-                        setStatusDisable(res.data.data[0].status.toString() === "disable" ? true : false);
+                          setStatusEnable(
+                            res.data.data[0].status.toString() === "enable"
+                              ? true
+                              : false
+                          );
+                          setStatusDisable(
+                            res.data.data[0].status.toString() === "disable"
+                              ? true
+                              : false
+                          );
 
-                        // setPreview(URL.createObjectURL(res.data.data[0].photo.toString()));
+                          // setPreview(URL.createObjectURL(res.data.data[0].photo.toString()));
 
-                        // console.log(res.data.data[0].condition.toString())
-                        // console.log(tags)
-                        // console.log(updateProductSeller.status)
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                      });
-                  };
+                          // console.log(res.data.data[0].condition.toString())
+                          // console.log(tags)
+                          // console.log(updateProductSeller.status)
+                        })
+                        .catch((error) => {
+                          console.log(error);
+                        });
+                    };
 
-                  getDetailProduct();
-                  // console.log(item.row.original.id)
-                  setShowListProduct(false);
-                }}
-                // style={{ marginRight: "10px" }}
-              >
-                {"Edit"}
-              </button>
-            
-              
-            </div></Fragment>
+                    getDetailProduct();
+                    // console.log(item.row.original.id)
+                    setShowListProduct(false);
+                  }}
+                  // style={{ marginRight: "10px" }}
+                >
+                  {"Edit"}
+                </button>
+              </div>
+            </Fragment>
           );
         },
-        
       },
     ],
     []
   );
 
-  const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
-    const defaultRef = useRef();
-    const resolvedRef = ref || defaultRef;
+  const IndeterminateCheckbox = forwardRef(
+    ({ indeterminate, ...rest }, ref) => {
+      const defaultRef = useRef();
+      const resolvedRef = ref || defaultRef;
 
-    useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate;
-    }, [resolvedRef, indeterminate]);
+      useEffect(() => {
+        resolvedRef.current.indeterminate = indeterminate;
+      }, [resolvedRef, indeterminate]);
 
-    return (
-      <>
-        <input type="checkbox" ref={resolvedRef} onChange={(e) => handleDisplay} checked={diplayButton} {...rest} />
-      </>
-    );
-  });
+      return (
+        <>
+          <input
+            type="checkbox"
+            ref={resolvedRef}
+            onChange={(e) => handleDisplay}
+            checked={diplayButton}
+            {...rest}
+          />
+        </>
+      );
+    }
+  );
 
   const {
     getTableProps,
@@ -270,7 +346,7 @@ const MyRecipes = () => {
 
     useGlobalFilter,
     usePagination,
-    useRowSelect, 
+    useRowSelect,
     (hooks) => {
       hooks.visibleColumns.push((columns) => [
         {
@@ -279,19 +355,13 @@ const MyRecipes = () => {
           Header: ({ getToggleAllPageRowsSelectedProps, row }) => (
             <div>
               <IndeterminateCheckbox
-                {...getToggleAllPageRowsSelectedProps({
-                  
-                })}
+                {...getToggleAllPageRowsSelectedProps({})}
               />
             </div>
           ),
           Cell: ({ row }) => (
             <div>
-              <IndeterminateCheckbox
-                {...row.getToggleRowSelectedProps({
-                
-                })}
-              />
+              <IndeterminateCheckbox {...row.getToggleRowSelectedProps({})} />
             </div>
           ),
         },
@@ -303,8 +373,7 @@ const MyRecipes = () => {
   const dataCheckList = selectedFlatRows.map((d) => `'${d.original.id}'`);
 
   const handleDeleteSelected = () => {
-    dispatch(deletedSelectedMyRecipes(dataCheckList))
-    .unwrap();
+    dispatch(deletedSelectedMyRecipes(dataCheckList)).unwrap();
 
     // const handleDeleteSelect = async () => {
     //   await axios
@@ -327,7 +396,6 @@ const MyRecipes = () => {
     //     });
     // };
     // handleDeleteSelect();
-
   };
 
   // const handleDelete = () => {
@@ -359,7 +427,6 @@ const MyRecipes = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   return (
     <Fragment>
       <div className="my-recipes-page">
@@ -368,13 +435,19 @@ const MyRecipes = () => {
             <thead>
               <tr>
                 <th colSpan={visibleColumns.length}>
-                  <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
+                  <GlobalFilter
+                    preGlobalFilteredRows={preGlobalFilteredRows}
+                    globalFilter={globalFilter}
+                    setGlobalFilter={setGlobalFilter}
+                  />
                 </th>
               </tr>
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
-                    <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                    <th {...column.getHeaderProps()}>
+                      {column.render("Header")}
+                    </th>
                   ))}
                 </tr>
               ))}
@@ -385,7 +458,9 @@ const MyRecipes = () => {
                 return (
                   <tr {...row.getRowProps()}>
                     {row.cells.map((cell) => {
-                      return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );
                     })}
                   </tr>
                 );
@@ -397,16 +472,32 @@ const MyRecipes = () => {
 
           <div className=" d-xl-flex d-lg-flex d-md-grid d-sm-grid pagination ">
             <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex justify-content-between align-items-center my-2">
-              <button className="btn btn-warning text-light  rounded-pill" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              <button
+                className="btn btn-warning text-light  rounded-pill"
+                onClick={() => gotoPage(0)}
+                disabled={!canPreviousPage}
+              >
                 {"<<"}
               </button>{" "}
-              <button className="btn btn-warning text-light  rounded-pill px-3" onClick={() => previousPage()} disabled={!canPreviousPage}>
+              <button
+                className="btn btn-warning text-light  rounded-pill px-3"
+                onClick={() => previousPage()}
+                disabled={!canPreviousPage}
+              >
                 {"<"}
               </button>{" "}
-              <button className="btn btn-warning  text-light  rounded-pill px-3" onClick={() => nextPage()} disabled={!canNextPage}>
+              <button
+                className="btn btn-warning  text-light  rounded-pill px-3"
+                onClick={() => nextPage()}
+                disabled={!canNextPage}
+              >
                 {">"}
               </button>{" "}
-              <button className="btn btn-warning text-light rounded-pill" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+              <button
+                className="btn btn-warning text-light rounded-pill"
+                onClick={() => gotoPage(pageCount - 1)}
+                disabled={!canNextPage}
+              >
                 {">>"}
               </button>{" "}
             </div>
@@ -424,7 +515,9 @@ const MyRecipes = () => {
                   type="number"
                   defaultValue={pageIndex + 1}
                   onChange={(e) => {
-                    const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                    const page = e.target.value
+                      ? Number(e.target.value) - 1
+                      : 0;
                     gotoPage(page);
                   }}
                   style={{ width: "100px" }}
@@ -444,6 +537,7 @@ const MyRecipes = () => {
               </select>
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     </Fragment>
