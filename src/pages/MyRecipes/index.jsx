@@ -2,6 +2,10 @@ import { Fragment, useEffect, useState, useMemo, useRef, forwardRef } from "reac
 
 import { useTable, usePagination, useRowSelect, useGlobalFilter, useAsyncDebounce } from "react-table";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { deletedSelectedMyRecipes } from "../../app/redux/Slice/MyRecipesSlice";
+
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -16,7 +20,9 @@ import imgProfile from "../../assets/images/add_image.png";
 
 const MyRecipes = () => {
   const token = localStorage.getItem("token");
+  const id = localStorage.getItem("id");
 
+  const dispatch = useDispatch();
   const [productSeller, setProductSeller] = useState([]);
 
   const [updateProductSeller, setUpdateProductSeller] = useState([]);
@@ -55,6 +61,19 @@ const MyRecipes = () => {
     setDisplayButton(!diplayButton);
   };
 
+
+  const getAllProduct = async () => {
+    await axios
+      .get(process.env.REACT_APP_API_BACKEND + "recipes/usersrecipes/" + id)
+      .then((response) => {
+        setProductSeller(response.data.data);
+        // console.log(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   const dataTable = productSeller;
 
   // Define a default UI for filtering
@@ -117,33 +136,41 @@ const MyRecipes = () => {
         Cell: (item) => {
           return (
             <Fragment>
-              {/* <img className="img-thumbnails" crossOrigin="anonymous" src={item.row.original.photo} alt="" /> */}
-              <h6 className="text-dark fw-bold title-product-table ">{item.row.original.name}</h6>
+              <h6 className="text-dark fw-bold title-recipes-table ">{item.row.original.name}</h6>
             </Fragment>
           );
         },
-        // accessor is the "key" in the data
       },
+      
       {
-        Header: "Stock",
-        accessor: "stock",
-      },
-      {
-        Header: "Price",
-        accessor: "price",
+        Header: "Photo",
+        accessor: "photo_id",
         Cell: (item) => {
-          return <div>$ {item.row.original.price}</div>;
+          return (
+            <Fragment>
+              <img className="img-thumbnails"  referrerPolicy="no-referrer"  src={item.row.original.photo_id} alt="" />
+            </Fragment>
+          );
         },
       },
       {
-        Header: "Photo",
-        accessor: "photo",
+        Header: "Videos",
+        accessor: "videos_id",
         Cell: (item) => {
           return (
-            <div>
-              <img className="img-thumbnails" crossOrigin="anonymous" src={item.row.original.photo} alt="" />
-            </div>
+            <Fragment>
+              <img className="img-thumbnails"  referrerPolicy="no-referrer"  src={item.row.original.photo_id} alt="" />
+            </Fragment>
           );
+        },
+      },
+      {
+        Header: "Description",
+        accessor: "description", 
+        Cell: (item) => {
+          return <Fragment>
+            <p className="description-recipes-table ">{item.row.original.description}</p>
+            </Fragment >;
         },
       },
       {
@@ -151,9 +178,10 @@ const MyRecipes = () => {
         accessor: "action",
         Cell: (item) => {
           return (
+            <Fragment>
             <div className="d-flex justify-content-center">
               <button
-                className="btn btn btn-danger rounded-pill"
+                className="btn btn btn-warning  text-light  rounded-pill"
                 onClick={(e) => {
                   const getDetailProduct = async () => {
                     await axios
@@ -186,11 +214,14 @@ const MyRecipes = () => {
                 }}
                 // style={{ marginRight: "10px" }}
               >
-                {"Detail"}
+                {"Edit"}
               </button>
-            </div>
+            
+              
+            </div></Fragment>
           );
         },
+        
       },
     ],
     []
@@ -239,7 +270,7 @@ const MyRecipes = () => {
 
     useGlobalFilter,
     usePagination,
-    useRowSelect, // useGlobalFilter!
+    useRowSelect, 
     (hooks) => {
       hooks.visibleColumns.push((columns) => [
         {
@@ -249,12 +280,7 @@ const MyRecipes = () => {
             <div>
               <IndeterminateCheckbox
                 {...getToggleAllPageRowsSelectedProps({
-                  // onChange: () => {
-                  //    const selected = row.isSelected; // get selected status of current row.
-                  //    toggleAllRowsSelected(false); // deselect all.
-                  //    row.toggleRowSelected(!selected); // reverse selected status of current row.
-                  //    console.log(row.original.id)
-                  //  }
+                  
                 })}
               />
             </div>
@@ -263,13 +289,7 @@ const MyRecipes = () => {
             <div>
               <IndeterminateCheckbox
                 {...row.getToggleRowSelectedProps({
-                  //  onChange: (e) => {
-                  // const selected = row.isSelected; // get selected status of current row.
-                  //   // toggleAllRowsSelected(false); // deselect all.
-                  // row.toggleRowSelected(!selected); // reverse selected status of current row.
-                  // console.log(row.original.id)
-                  // selected ? console.log("unchek") : console.log("check")
-                  // },
+                
                 })}
               />
             </div>
@@ -281,56 +301,64 @@ const MyRecipes = () => {
   );
 
   const dataCheckList = selectedFlatRows.map((d) => `'${d.original.id}'`);
-  // console.log(dataCheckList.toString());
-  // dataCheckList.length === 0 ? console.log("kosong") : console.log("ada isi");
 
   const handleDeleteSelected = () => {
-    const handleDeleteSelect = async () => {
-      await axios
-        .delete(process.env.REACT_APP_API_BACKEND + "product/selected/" + dataCheckList, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          // alert("delete success");
-          toast.success("Delete Selected Success", { autoClose: 2500 });
-          setShowModalDeleteSelected(false);
-          // getAllProduct();
-        })
-        .catch((err) => {
-          // alert("delete failed");
-          toast.success(err, { autoClose: 2500 });
-          setShowModalDeleteSelected(false);
-        });
-    };
-    handleDeleteSelect();
+    dispatch(deletedSelectedMyRecipes(dataCheckList))
+    .unwrap();
+
+    // const handleDeleteSelect = async () => {
+    //   await axios
+    //     .delete(process.env.REACT_APP_API_BACKEND + "recipes/selected/" + dataCheckList, {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //     .then((res) => {
+    //       // alert("delete success");
+    //       toast.success("Delete Selected Success", { autoClose: 2500 });
+    //       setShowModalDeleteSelected(false);
+    //       // getAllProduct();
+    //     })
+    //     .catch((err) => {
+    //       // alert("delete failed");
+    //       toast.success(err, { autoClose: 2500 });
+    //       setShowModalDeleteSelected(false);
+    //     });
+    // };
+    // handleDeleteSelect();
+
   };
 
-  const handleDelete = () => {
-    const handleDeleted = async () => {
-      await axios
-        .delete(process.env.REACT_APP_API_BACKEND + "product/" + updateProductSeller.id, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          // alert("delete success");
-          toast.success("Delete Selected Success", { autoClose: 2500 });
-          setShowModalDelete(false);
-          // getAllProduct();
-        })
-        .catch((err) => {
-          // alert("delete failed");
-          toast.success(err, { autoClose: 2500 });
-          setShowModalDelete(false);
-        });
-    };
-    handleDeleted();
-  };
+  // const handleDelete = () => {
+  //   const handleDeleted = async () => {
+  //     await axios
+  //       .delete(process.env.REACT_APP_API_BACKEND + "recipes/" + updateProductSeller.id, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       })
+  //       .then((res) => {
+  //         // alert("delete success");
+  //         toast.success("Delete Selected Success", { autoClose: 2500 });
+  //         setShowModalDelete(false);
+  //         // getAllProduct();
+  //       })
+  //       .catch((err) => {
+  //         // alert("delete failed");
+  //         toast.success(err, { autoClose: 2500 });
+  //         setShowModalDelete(false);
+  //       });
+  //   };
+  //   handleDeleted();
+  // };
+
+  useEffect(() => {
+    getAllProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <Fragment>
@@ -369,16 +397,16 @@ const MyRecipes = () => {
 
           <div className=" d-xl-flex d-lg-flex d-md-grid d-sm-grid pagination ">
             <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 d-flex justify-content-between align-items-center my-2">
-              <button className="btn btn-danger rounded-pill" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+              <button className="btn btn-warning text-light  rounded-pill" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                 {"<<"}
               </button>{" "}
-              <button className="btn btn-danger rounded-pill px-3" onClick={() => previousPage()} disabled={!canPreviousPage}>
+              <button className="btn btn-warning text-light  rounded-pill px-3" onClick={() => previousPage()} disabled={!canPreviousPage}>
                 {"<"}
               </button>{" "}
-              <button className="btn btn-danger rounded-pill px-3" onClick={() => nextPage()} disabled={!canNextPage}>
+              <button className="btn btn-warning  text-light  rounded-pill px-3" onClick={() => nextPage()} disabled={!canNextPage}>
                 {">"}
               </button>{" "}
-              <button className="btn btn-danger rounded-pill" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+              <button className="btn btn-warning text-light rounded-pill" onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
                 {">>"}
               </button>{" "}
             </div>

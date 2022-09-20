@@ -18,6 +18,7 @@ import SearchRecipesReducer from "./Slice/SearchRecipesSlice"
 
 import RecipesUserReducer from "./Slice/RecipesUserSlice"
 
+import MyRecipesReducer from "./Slice/MyRecipesSlice";
 
 export default configureStore({
     reducer: {
@@ -31,6 +32,7 @@ export default configureStore({
 
         ProfileUser: ProfileUserReducer,
 
+        MyRecipes : MyRecipesReducer,
         // ProductBySearch: ProductBySearchReducer,
         // ProductBySeller: ProductBySellerReducer,
 
@@ -38,7 +40,6 @@ export default configureStore({
         SignUpUser: SignUpUserReducer,
 
         RecipesUser : RecipesUserReducer,
-
 
     }
 });

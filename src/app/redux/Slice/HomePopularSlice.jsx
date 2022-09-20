@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getHomePopular = createAsyncThunk("HomePopular/getHomePopular", async () => {
   try {
-    const response = await axios.get(process.env.REACT_APP_API_BACKEND + "recipes?sortby=created_on&sort=desc&page=1&limit=3", {
+    const response = await axios.get(process.env.REACT_APP_API_BACKEND + "recipes?sortby=created_on&sort=asc&page=1&limit=3", {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

@@ -80,8 +80,12 @@ const ProfileUserSlice = createSlice({
         state.user_phone = action.payload.data.phone;
 
         // state.user_date_of_birth = action.payload.data.date_of_birth
-        const dob = action.payload.data.date_of_birth.split("T");
-        state.user_date_of_birth = dob[0];
+        if (action.payload.data.date_of_birth) {
+          const dob = action.payload.data.date_of_birth.split("T");
+        state.user_date_of_birth = dob[0]
+      } else {
+        state.user_date_of_birth = action.payload.data.date_of_birth
+      }
 
         state.user_picture = action.payload.data.picture;
         state.user_role = action.payload.data.role;

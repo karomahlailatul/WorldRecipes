@@ -4,9 +4,10 @@ import MyRecipe from "../../component/myRecipe/index";
 import SavedRecipe from "../../component/savedRecipe/index";
 import LikedRecipe from "../../component/likedRecipe/index";
 
-import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
 
 import { getProfileUser } from "../../app/redux/Slice/ProfileUserSlice";
 
