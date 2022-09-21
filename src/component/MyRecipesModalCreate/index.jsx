@@ -11,7 +11,7 @@ import PhotoEmpty from "../../assets/images/icons/ico-user.svg";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function MyRecipesModalCreate() {
+function MyRecipesModalCreate({getAllProduct}) {
   
   const id_token = localStorage.getItem("id");
   const [show, setShow] = useState(false);
@@ -100,6 +100,7 @@ function MyRecipesModalCreate() {
         setNewPhotoCreate();
         setPreviewCreate();
         setShow(false)
+        getAllProduct()
         // dispatchMyRecipes();
         // dispatchProfileUser();
       });

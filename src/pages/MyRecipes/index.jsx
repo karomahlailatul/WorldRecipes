@@ -98,7 +98,7 @@ const MyRecipes = () => {
       <Fragment>
         <div className="col-12 d-flex justify-content-between">
           <div className="col-2" >
-           <MyRecipesModalCreate />
+           <MyRecipesModalCreate getAllProduct={getAllProduct} />
           </div>
           <div className="col-8 d-flex border border-1 rounded-pill ">
             <input
