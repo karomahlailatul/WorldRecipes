@@ -22,14 +22,14 @@ function MyRecipesModalCreate() {
 
   // console.log(idRecipes)
 
-  const [preview, setPreview] = useState();
-  const [newPicture, setNewPicture] = useState(null);
+  const [previewCreate, setPreviewCreate] = useState();
+  const [newPhotoCreate, setNewPhotoCreate] = useState(null);
 
   const dispatch = useDispatch();
 
-  // const dispatchMyRecipes = () => {
-  //   dispatch(getMyRecipes(idRecipes)).unwrap();
-  // };
+  const dispatchMyRecipes = () => {
+    dispatch(getMyRecipes()).unwrap();
+  };
 
   // const dispatchMyRecipesDetails = () => {
   //   dispatch(getMyRecipesDetails({idRecipes})).unwrap();
@@ -46,6 +46,7 @@ function MyRecipesModalCreate() {
   // } = useSelector((state) => state.MyRecipes);
 
   // console.log(recipes_id)
+
   const [dataRecipes, setDataRecipes] = useState({
     id: '',
     name: '',
@@ -59,66 +60,56 @@ function MyRecipesModalCreate() {
 
   // // console.log(user_role)
 
-  const handleChange = (e) => {
+  const handleChangeCreate = (e) => {
     setDataRecipes({
       ...dataRecipes,
       [e.target.name]: e.target.value,
     });
-    // console.log(dataRecipes);
-    // console.log(newPicture);
+    console.log(dataRecipes);
+    console.log(newPhotoCreate);
   };
 
-  const handleUpload = (e) => {
-    setNewPicture(e.target.files[0]);
-    setPreview(URL.createObjectURL(e.target.files[0]));
+  const handleUploadChange = (e) => {
+    setNewPhotoCreate(e.target.files[0]);
+    setPreviewCreate(URL.createObjectURL(e.target.files[0]));
   };
+
 
   const handleCreate = async (e) => {
     await e.preventDefault();
-    const formData = new FormData();
+    const formDataCreate = new FormData();
     // formData.append("id", dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
-    formData.append("name",  dataRecipes.name);
-    formData.append("photo_id",  newPicture);
-    formData.append("videos_id",  dataRecipes.videos_id);
-    formData.append("description",  dataRecipes.description);
-    formData.append("category_id", dataRecipes.category_id);
-    formData.append("users_id",  dataRecipes.users_id);
+    formDataCreate.append("name",  dataRecipes.name);
+    formDataCreate.append("photo_id",  newPhotoCreate);
+    formDataCreate.append("videos_id",  dataRecipes.videos_id);
+    formDataCreate.append("description",  dataRecipes.description);
+    formDataCreate.append("category_id", dataRecipes.category_id);
+    formDataCreate.append("users_id", id_token);
 
     // console.log( dataRecipes.id === undefined ? recipes_details_id : dataRecipes.id);
-    // console.log( dataRecipes.name === undefined ? recipes_details_name : dataRecipes.name);
-    // console.log( newPicture === undefined ? recipes_details_photo_id : newPicture);
-    // console.log( dataRecipes.videos_id === undefined ? recipes_details_videos_id : dataRecipes.videos_id);
-    // console.log( dataRecipes.description === undefined ? recipes_details_description : dataRecipes.description);
-    // console.log( dataRecipes.category_id === undefined ? recipes_details_category_id : dataRecipes.category_id);
-    // console.log( dataRecipes.users_id === undefined ? recipes_details_users_id : dataRecipes.users_id);
+    // console.log( dataRecipes.name)
+    // console.log( newPhotoCreate )
+    // console.log( dataRecipes.videos_id )
+    // console.log( dataRecipes.description )
+    // console.log( dataRecipes.category_id )
+    // console.log( id_token )
 
-    // const put_user_name = (dataRecipes.name === undefined ? user_name : dataRecipes.name);
-    // const put_user_gender = (dataRecipes.gender === undefined ? user_gender : dataRecipes.gender);
-    // const put_user_date_of_birth = (dataRecipes.date_of_birth === undefined ? user_date_of_birth : dataRecipes.date_of_birth);
-    // const put_user_phone =  (dataRecipes.phone === undefined ? user_phone : dataRecipes.phone);
-    // const put_user_role = (dataRecipes.role === undefined ? user_role : dataRecipes.role);
-    // const put_user_picture =  (newPicture === undefined ? user_picture : newPicture);
-
-    await dispatch(postMyRecipes({formData}))
+     await dispatch(postMyRecipes(formDataCreate))
       .unwrap()
       .then((item) => {
-        setNewPicture();
-        setPreview();
+        setNewPhotoCreate();
+        setPreviewCreate();
         setShow(false)
-      //   dispatchMyRecipes();
-      //   // dispatchProfileUser();
+        // dispatchMyRecipes();
+        // dispatchProfileUser();
       });
   };
-  
-    // console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
-    // console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
-    // console.log( newPicture === undefined ? recipes_photo_id : newPicture);
-    // console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
-    // console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
-    // console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
-    // console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
+
+
 
   useEffect(() => {
+    
+    // dispatchMyRecipes();
     // dispatchMyRecipesDetails()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -155,8 +146,8 @@ function MyRecipesModalCreate() {
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   onClick={(e) => {
-                    setPreview();
-                    setNewPicture();
+                    setPreviewCreate();
+                    setNewPhotoCreate();
                   }}
                 ></button>
               </div>
@@ -164,31 +155,31 @@ function MyRecipesModalCreate() {
               <div className="modal-body">
                
                 <label className="d-flex justify-content-start mb-1">ID Recipes :</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="ID" name="id" defaultValue={null} disabled onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="ID" name="id" defaultValue={null} disabled onChange={handleChangeCreate} />
 
                 <label className="d-flex justify-content-start mt-3  mb-1">User ID</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={null} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={null} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3 mb-1">Name Recipes</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={null} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={null} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Photo</label>
                 <div className="d-flex justify-content-center">
                   <div className="position-relative">
-                    <img className="picture-profile " src={preview === undefined || preview === null ? (null === null || null === undefined ? PhotoEmpty : null) : preview} alt="" />
+                    <img className="picture-profile " src={previewCreate === undefined || previewCreate === null ? (null === null || null === undefined ? PhotoEmpty : null) : previewCreate} alt="" />
                   </div>
                 </div>
-                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPicture === undefined ? null : newPicture} name="photo" onChange={handleUpload} />
+                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPhotoCreate === undefined ? null : newPhotoCreate} name="photo" onChange={handleUploadChange} />
 
                
                 <label className="d-flex justify-content-start mt-3  mb-1">Videos</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={null} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={null} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Description</label>
-                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={null} onChange={handleChange} />
+                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={null} onChange={handleChangeCreate} />
 
                 <label className="d-flex justify-content-start mt-3  mb-1">Category id</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Category Id" name="category_id" defaultValue={null} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Category Id" name="category_id" defaultValue={null} onChange={handleChangeCreate} />
                 
               
               </div>
@@ -198,8 +189,8 @@ function MyRecipesModalCreate() {
                   className="btn btn-secondary"
                   data-bs-dismiss="modal"
                   onClick={(e) => {
-                    setPreview();
-                    setNewPicture();
+                    setPreviewCreate();
+                    setNewPhotoCreate();
                   }}
                 >
                   Close
@@ -209,8 +200,8 @@ function MyRecipesModalCreate() {
                   className="btn btn-warning text-light"
                   onClick={(e) => {
                     // setTimeout(() => {
-                      setPreview();
-                      setNewPicture();
+                      setPreviewCreate();
+                      setNewPhotoCreate();
                     // }, 2500);
                   }}
                 >
@@ -238,7 +229,7 @@ function MyRecipesModalCreate() {
               placeholder="name"
               name="name"
               value={dataRecipes.name}
-              onChange={handleChange}
+              onChange={handleChangeCreate}
             />
             <input
               className="form-control mt-3"
@@ -246,7 +237,7 @@ function MyRecipesModalCreate() {
               placeholder="stock"
               name="stock"
               value={dataRecipes.stock}
-              onChange={handleChange}
+              onChange={handleChangeCreate}
             />
             <input
               className="form-control mt-3"
@@ -254,14 +245,14 @@ function MyRecipesModalCreate() {
               placeholder="price"
               name="price"
               value={dataRecipes.price}
-              onChange={handleChange}
+              onChange={handleChangeCreate}
             />
             <input
               className="form-control mt-3"
               type="file"
               placeholder="photo"
               name="photo_id"
-              onChange={handleUpload}
+              onChange={handleUploadChange}
             />
             <input
               className="form-control mt-3"
@@ -269,41 +260,41 @@ function MyRecipesModalCreate() {
               placeholder="description"
               name="description"
               value={dataRecipes.description}
-              onChange={handleChange}/> */}
+              onChange={handleChangeCreate}/> */}
 
 
               
                 <label className="d-flex justify-content-start  mb-1">User ID</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={id_token} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={id_token} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3 mb-1">Name Recipes</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={dataRecipes.name} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={dataRecipes.name} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Photo</label>
                 <div className="d-flex justify-content-center">
                   <div className="position-relative">
-                    <img className="picture-profile " src={preview === undefined || preview === dataRecipes.photo_id ? PhotoEmpty : preview} alt="" />
+                    <img className="picture-profile " src={previewCreate === undefined || previewCreate === dataRecipes.photo_id ? PhotoEmpty : previewCreate} alt="" />
                   </div>
                 </div>
-                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPicture === undefined ? dataRecipes.photo_id : newPicture} name="photo_id" onChange={handleUpload} />
+                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPhotoCreate} name="photo_id" onChange={handleUploadChange} />
 
                
                 <label className="d-flex justify-content-start mt-3  mb-1">Videos</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={dataRecipes.videos_id} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={dataRecipes.videos_id} onChange={handleChangeCreate} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Description</label>
-                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={dataRecipes.description} onChange={handleChange} />
+                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={dataRecipes.description} onChange={handleChangeCreate} />
 
                 <label className="d-flex justify-content-start mt-3  mb-1">Category id</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Category Id" name="category_id" defaultValue={dataRecipes.category_id} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Category Id" name="category_id" defaultValue={dataRecipes.category_id} onChange={handleChangeCreate} />
               
 
 
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={(e) => {
-            setPreview();
-            setNewPicture();
+            setPreviewCreate();
+            setNewPhotoCreate();
             handleClose();
           }}>
             Close

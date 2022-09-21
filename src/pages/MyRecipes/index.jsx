@@ -80,12 +80,12 @@ const MyRecipes = () => {
 
   const { MyRecipes} = useSelector((state) => state.MyRecipes);
   
-  console.log(MyRecipes)
+  // console.log(MyRecipes)
+
+  const dataTable = recipes;
+  
   // const dataTable = MyRecipes;
   
-  const dataTable = MyRecipes;
-  
-
 
 
   function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) {
@@ -350,10 +350,10 @@ const MyRecipes = () => {
 
 
   useEffect(() => {
-    // getAllProduct();
-    dispatchMyRecipes();
+    getAllProduct();
+    // dispatchMyRecipes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, []);
 
   return (
     <Fragment>

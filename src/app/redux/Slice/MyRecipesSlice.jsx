@@ -124,7 +124,7 @@ export const putMyRecipes = createAsyncThunk("MyRecipes/putMyRecipes", async ({r
   }
 });
 
-export const postMyRecipes = createAsyncThunk("MyRecipes/postMyRecipes", async ({formData}) => {
+export const postMyRecipes = createAsyncThunk("MyRecipes/postMyRecipes", async (formDataCreate) => {
   let api = PrivateAxios();
 
   try {
@@ -134,7 +134,7 @@ export const postMyRecipes = createAsyncThunk("MyRecipes/postMyRecipes", async (
     // console.log(formData)
     if (token) {
       const response = await api
-        .put(process.env.REACT_APP_API_BACKEND + "recipes/", formData, {
+        .post(process.env.REACT_APP_API_BACKEND + "recipes/", formDataCreate, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,

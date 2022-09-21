@@ -46,8 +46,8 @@ function ModalEdit() {
       ...dataUser,
       [e.target.name]: e.target.value,
     });
-    console.log(dataUser);
-    console.log(newPicture);
+    // console.log(dataUser);
+    // console.log(newPicture);
   };
 
   const handleUpload = (e) => {
@@ -65,12 +65,12 @@ function ModalEdit() {
     formData.append("role", dataUser.role === undefined ? user_role : dataUser.role);
     formData.append("picture", newPicture === undefined ? user_picture : newPicture);
 
-    console.log(dataUser.name === undefined ? user_name : dataUser.name);
-    console.log(dataUser.gender === undefined ? user_gender : dataUser.gender);
-    console.log(dataUser.date_of_birth === undefined ? user_date_of_birth : dataUser.date_of_birth);
-    console.log(dataUser.phone === undefined ? user_phone : dataUser.phone);
-    console.log(dataUser.role === undefined ? user_role : dataUser.role);
-    console.log(newPicture === undefined ? user_picture : newPicture);
+    // console.log(dataUser.name === undefined ? user_name : dataUser.name);
+    // console.log(dataUser.gender === undefined ? user_gender : dataUser.gender);
+    // console.log(dataUser.date_of_birth === undefined ? user_date_of_birth : dataUser.date_of_birth);
+    // console.log(dataUser.phone === undefined ? user_phone : dataUser.phone);
+    // console.log(dataUser.role === undefined ? user_role : dataUser.role);
+    // console.log(newPicture === undefined ? user_picture : newPicture);
 
     // const put_user_name = (dataUser.name === undefined ? user_name : dataUser.name);
     // const put_user_gender = (dataUser.gender === undefined ? user_gender : dataUser.gender);
