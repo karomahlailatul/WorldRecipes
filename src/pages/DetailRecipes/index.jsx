@@ -33,7 +33,13 @@ const DetailRecipes = () => {
             <h2 className="text cover mt-5">Description</h2>
             <p className="mt-2">{DetailRecipes.description}</p>
             <h2 className="text cover mt-5">Video Step</h2>
-            <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+            <ReactPlayer
+              className="react-player"
+              url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+              width="100%"
+              height="100%"
+              controls={false}
+            />
             <div className="position-relative">
               <div className="input-group mt-5">
                 <span className="input-group-text">Comment</span>
