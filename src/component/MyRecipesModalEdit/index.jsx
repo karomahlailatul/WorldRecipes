@@ -7,44 +7,44 @@ import { getMyRecipes,getMyRecipesDetails, putMyRecipes } from "../../app/redux/
 
 import PhotoEmpty from "../../assets/images/icons/ico-user.svg";
 
-function MyRecipesModalEdit({id}) {
+function MyRecipesModalEdit({idRecipes}) {
 
   // let idproduct = id.id;
 
-  // console.log(id)
+  // console.log(idRecipes)
 
   const [preview, setPreview] = useState();
   const [newPicture, setNewPicture] = useState(null);
 
   const dispatch = useDispatch();
 
-  const dispatchMyRecipes = () => {
-    dispatch(getMyRecipes(id)).unwrap();
-  };
+  // const dispatchMyRecipes = () => {
+  //   dispatch(getMyRecipes(idRecipes)).unwrap();
+  // };
 
   const dispatchMyRecipesDetails = () => {
-    dispatch(getMyRecipesDetails(id)).unwrap();
+    dispatch(getMyRecipesDetails({idRecipes})).unwrap();
   };
 
   const {
-    recipes_id,
-    recipes_name,
-    recipes_photo_id,
-    recipes_videos_id,
-    recipes_description,
-    recipes_category_id,
-    recipes_users_id,
+    recipes_details_id,
+    recipes_details_name,
+    recipes_details_photo_id,
+    recipes_details_videos_id,
+    recipes_details_description,
+    recipes_details_category_id,
+    recipes_details_users_id,
   } = useSelector((state) => state.MyRecipes);
 
-  console.log(recipes_id)
+  // console.log(recipes_id)
   const [dataRecipes, setDataRecipes] = useState({
-    id: recipes_id,
-    name: recipes_name,
-    photo_id : recipes_photo_id,
-    videos_id: recipes_videos_id,
-    description: recipes_description,
-    category_id : recipes_category_id, 
-    users_id : recipes_users_id, 
+    id: recipes_details_id,
+    name: recipes_details_name,
+    photo_id : recipes_details_photo_id,
+    videos_id: recipes_details_videos_id,
+    description: recipes_details_description,
+    category_id : recipes_details_category_id, 
+    users_id : recipes_details_users_id, 
   });
 
 
@@ -67,21 +67,21 @@ function MyRecipesModalEdit({id}) {
   const handleUpdate = async (e) => {
     await e.preventDefault();
     const formData = new FormData();
-    formData.append("id", dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
-    formData.append("name", dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
-    formData.append("photo_id", newPicture === undefined ? recipes_photo_id : newPicture);
-    formData.append("videos_id", dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
-    formData.append("description", dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
-    formData.append("category_id", dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
-    formData.append("users_id", dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
+    // formData.append("id", dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
+    formData.append("name", dataRecipes.name === undefined ? recipes_details_name : dataRecipes.name);
+    formData.append("photo_id", newPicture === undefined ? recipes_details_photo_id : newPicture);
+    formData.append("videos_id", dataRecipes.videos_id === undefined ? recipes_details_videos_id : dataRecipes.videos_id);
+    formData.append("description", dataRecipes.description === undefined ? recipes_details_description : dataRecipes.description);
+    formData.append("category_id", dataRecipes.category_id === undefined ? recipes_details_category_id : dataRecipes.category_id);
+    formData.append("users_id", dataRecipes.users_id === undefined ? recipes_details_users_id : dataRecipes.users_id);
 
-    // console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
-    // console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
-    // console.log( newPicture === undefined ? recipes_photo_id : newPicture);
-    // console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
-    // console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
-    // console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
-    // console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
+    // console.log( dataRecipes.id === undefined ? recipes_details_id : dataRecipes.id);
+    // console.log( dataRecipes.name === undefined ? recipes_details_name : dataRecipes.name);
+    // console.log( newPicture === undefined ? recipes_details_photo_id : newPicture);
+    // console.log( dataRecipes.videos_id === undefined ? recipes_details_videos_id : dataRecipes.videos_id);
+    // console.log( dataRecipes.description === undefined ? recipes_details_description : dataRecipes.description);
+    // console.log( dataRecipes.category_id === undefined ? recipes_details_category_id : dataRecipes.category_id);
+    // console.log( dataRecipes.users_id === undefined ? recipes_details_users_id : dataRecipes.users_id);
 
     // const put_user_name = (dataRecipes.name === undefined ? user_name : dataRecipes.name);
     // const put_user_gender = (dataRecipes.gender === undefined ? user_gender : dataRecipes.gender);
@@ -90,34 +90,36 @@ function MyRecipesModalEdit({id}) {
     // const put_user_role = (dataRecipes.role === undefined ? user_role : dataRecipes.role);
     // const put_user_picture =  (newPicture === undefined ? user_picture : newPicture);
 
-    dispatch(putMyRecipes(id,formData))
+    dispatch(putMyRecipes({idRecipes,formData}))
       .unwrap()
-      .then((item) => {
-        setNewPicture();
-        setPreview();
-        dispatchMyRecipes();
-        // dispatchProfileUser();
-      });
+      // .then((item) => {
+      //   setNewPicture();
+      //   setPreview();
+      //   dispatchMyRecipes();
+      //   // dispatchProfileUser();
+      // });
   };
-
   
-    console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
-    console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
-    console.log( newPicture === undefined ? recipes_photo_id : newPicture);
-    console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
-    console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
-    console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
-    console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
+    // console.log( dataRecipes.id === undefined ? recipes_id : dataRecipes.id);
+    // console.log( dataRecipes.name === undefined ? recipes_name : dataRecipes.name);
+    // console.log( newPicture === undefined ? recipes_photo_id : newPicture);
+    // console.log( dataRecipes.videos_id === undefined ? recipes_videos_id : dataRecipes.videos_id);
+    // console.log( dataRecipes.description === undefined ? recipes_description : dataRecipes.description);
+    // console.log( dataRecipes.category_id === undefined ? recipes_category_id : dataRecipes.category_id);
+    // console.log( dataRecipes.users_id === undefined ? recipes_users_id : dataRecipes.users_id);
 
   useEffect(() => {
-    dispatchMyRecipesDetails()
+    // dispatchMyRecipesDetails()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Fragment>
-      <img type="button" className="icon-edit mt-2" src={pen} alt="Edit Icon" data-bs-toggle="modal" data-bs-target="#modal-edit" />
-
+      <div className="d-flex justify-content-center text-center my-auto">
+      <img type="button" className="icon-edit mt-2" src={pen} alt="Edit Icon" data-bs-toggle="modal" data-bs-target="#modal-edit" 
+      // onClick={(e) => { dispatchMyRecipesDetails()}} 
+      /><p className="mt-2">Edit</p>
+    </div>
       <div
         className="modal fade"
         id="modal-edit"
@@ -149,34 +151,36 @@ function MyRecipesModalEdit({id}) {
               </div>
 
               <div className="modal-body">
-               
-                <label className="d-flex justify-content-start mb-1">ID Recipes :</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="ID" name="id" defaultValue={recipes_id} disabled onChange={handleChange} />
+
+                <div className="d-flex justify-content-center text-center"><h4>Sorry This Feature is Maintenance</h4></div>
+
+                {/* <label className="d-flex justify-content-start mb-1">ID Recipes :</label>
+                <input autoComplete="off" className="form-control " type="text" placeholder="ID" name="id" defaultValue={recipes_details_id} disabled onChange={handleChange} /> 
 
                 <label className="d-flex justify-content-start mt-3  mb-1">User ID</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={recipes_users_id} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="User ID" name="users_id" disabled defaultValue={recipes_details_users_id} onChange={handleChange} />
                 
                 <label className="d-flex justify-content-start mt-3 mb-1">Name Recipes</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={recipes_name} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Name Recipes" name="name" defaultValue={recipes_details_name} onChange={handleChange} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Photo</label>
                 <div className="d-flex justify-content-center">
                   <div className="position-relative">
-                    <img className="picture-profile " src={preview === undefined || preview === null ? (recipes_photo_id === null || recipes_photo_id === undefined ? PhotoEmpty : recipes_photo_id) : preview} alt="" />
+                    <img className="picture-profile " src={preview === undefined || preview === null ? (recipes_details_photo_id === null || recipes_details_photo_id === undefined ? PhotoEmpty : recipes_details_photo_id) : preview} alt="" />
                   </div>
                 </div>
-                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPicture === undefined ? recipes_photo_id : newPicture} name="photo" onChange={handleUpload} />
+                <input className="form-control mt-3 mb-1 " type="file" placeholder="photo" defaultValue={newPicture === undefined ? recipes_details_photo_id : newPicture} name="photo" onChange={handleUpload} />
 
                
                 <label className="d-flex justify-content-start mt-3  mb-1">Videos</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={recipes_videos_id} onChange={handleChange} />
+                <input autoComplete="off" className="form-control " type="text" placeholder="Videos Url" name="videos_id" defaultValue={recipes_details_videos_id} onChange={handleChange} />
                 
                 <label className="d-flex justify-content-start mt-3  mb-1">Description</label>
-                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={recipes_description} onChange={handleChange} />
+                <textarea autoComplete="off" className="form-control " type="text" placeholder="description Recipes" name="description"  rows="25" defaultValue={recipes_details_description} onChange={handleChange} />
 
                 <label className="d-flex justify-content-start mt-3  mb-1">Category id</label>
-                <input autoComplete="off" className="form-control " type="text" placeholder="Gender" name="gender" defaultValue={recipes_category_id} onChange={handleChange} />
-                
+                <input autoComplete="off" className="form-control " type="text" placeholder="Category Id" name="category_id" defaultValue={recipes_details_category_id} onChange={handleChange} />
+                  */}
               
               </div>
               <div className="modal-footer">
@@ -191,7 +195,7 @@ function MyRecipesModalEdit({id}) {
                 >
                   Close
                 </button>
-                <button
+                {/* <button
                   type="submit"
                   className="btn btn-warning text-light"
                   onClick={(e) => {
@@ -202,7 +206,7 @@ function MyRecipesModalEdit({id}) {
                   }}
                 >
                   Save changes
-                </button>
+                </button> */}
               </div>
             </div>
           </form>
