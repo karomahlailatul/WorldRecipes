@@ -19,6 +19,8 @@ import { ToastContainer, toast } from "react-toastify";
 import imgProfile from "../../assets/images/add_image.png";
 
 
+import PrivateAxios from "../../app/axios/PrivateAxios";
+
 import MyRecipesModalEdit from "../../component/MyRecipesModalEdit"
 import MyRecipesModalCreate from "../../component/MyRecipesModalCreate";
 
@@ -26,6 +28,7 @@ import MyRecipesModalCreate from "../../component/MyRecipesModalCreate";
 const MyRecipes = () => {
   const token = localStorage.getItem("token");
   const id = localStorage.getItem("id");
+  let api = PrivateAxios();
 
   const dispatch = useDispatch();
   const [recipes, setRecipes] = useState([]);
@@ -67,7 +70,7 @@ const MyRecipes = () => {
   };
 
   const getAllProduct = async () => {
-    await axios
+    await api
       .get(process.env.REACT_APP_API_BACKEND + "recipes/usersrecipes/" + id)
       .then((response) => {
         setRecipes(response.data.data);
@@ -316,7 +319,8 @@ const MyRecipes = () => {
         if (item.statusCode === 200) {
           // getAllProduct();
           handleCloseModalDeleteSelected();
-          dispatchMyRecipes();
+          // dispatchMyRecipes();
+          getAllProduct();
         // dispatch(postSignUpUser(dataUser))
         }
       });
