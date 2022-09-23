@@ -50,52 +50,11 @@ const Category = () => {
     }
   };
   useEffect(() => {
-    // if (keywordParam === null || keywordParam === undefined) {
-    //   valueSender = name + "?" + value;
-    //   dispatch(getCategory(valueSender)).unwrap();
-    // } else {
-    //   valueSender = name + "?" + keyword + value;
-    //   dispatch(getCategory(valueSender)).unwrap();
-    // }
     dispatchGetCategory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, keywordParam, value, dispatch]);
 
   return (
-    // <Fragment>
-    //   <section>
-    //     <div className="-list-category-page">
-    //       <div className="container ">
-    //         <div className="row-new">
-    //           <div className="row">
-    //             <div className="col-12 justify-content-center">
-    //               <div className="row">
-    //                 <div className=" d-flex col-12 my-xl-5 my-lg-5 my-md-4 my-sm-3 link-redirect">
-    //                   <h6 onClick={() => navigate("../home")}>
-    //                     <small>Home {">"}&nbsp;</small>
-    //                   </h6>
-    //                   <h6 onClick={() => navigate("../category")}>
-    //                     <small>category {">"}&nbsp; </small>
-    //                   </h6>
-    //                   <h6 onClick={() => navigate("../category/" + name)}>
-    //                     <small>{name}</small>
-    //                   </h6>
-    //                 </div>
-    //                 <h1 className="fw-bold "> from Category {name}</h1>
-    //               </div>
-    //             </div>
-    //             <div className="col-12 my-3">
-    //               <div className="row d-flex">
-    //                 <Card valueDispatch={Category} />
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </Fragment>
-
     <Fragment>
       <section>
         <div className="container mt-5 ">
@@ -112,7 +71,7 @@ const Category = () => {
                     </div>
                   ) : (
                     <div>
-                      <h1 className="fw-bold">Show All Category</h1>
+                      <h1 className="fw-bold">Find : {keywordParam}</h1>
                       <p className="fs-6 text-muted">
                         Total Category {pagination_totalData}
                       </p>
@@ -182,21 +141,36 @@ const Category = () => {
                 <div className="row d-flex">
                   <Fragment>
                     {Category.map((item) => (
-                     <Link className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none" to={`../recipes/${item.id}`} key={item.id}>
-                     <Card className="container border rounded align-items-center ShadowBox">
-                       <div key={item.id}>
-                         <div className="d-flex justify-content-center out-img-recipes">
-                           <img className="img-recipes" referrerPolicy="no-referrer" src={item.photo_id} alt="" />
-                        
-                         </div>
-                         <h5 className="text-dark fw-bold title-recipes">{item.name}</h5>
-                         <p className="text-muted text-description-search"> {item.description}</p>
-                         <div className="d-flex justify-content-center">
-                           <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">Learn More</button>
-                         </div>
-                       </div>
-                     </Card>
-                   </Link>
+                      <Link
+                        className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none"
+                        to={`../recipes/${item.id}`}
+                        key={item.id}
+                      >
+                        <Card className="container border rounded align-items-center ShadowBox">
+                          <div key={item.id}>
+                            <div className="d-flex justify-content-center out-img-recipes">
+                              <img
+                                className="img-recipes"
+                                referrerPolicy="no-referrer"
+                                src={item.photo_id}
+                                alt=""
+                              />
+                            </div>
+                            <h5 className="text-dark fw-bold title-recipes">
+                              {item.name}
+                            </h5>
+                            <p className="text-muted text-description-search">
+                              {" "}
+                              {item.description}
+                            </p>
+                            <div className="d-flex justify-content-center">
+                              <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">
+                                Learn More
+                              </button>
+                            </div>
+                          </div>
+                        </Card>
+                      </Link>
                     ))}
                   </Fragment>
                 </div>

@@ -813,3 +813,12 @@ label.form-check-label:focus,
 .ico-search{
   margin-right: 10px;
 }
+
+
+
+
+
+/* my recipes */
+.my-recipes-table{
+  border-radius: 10px !important;
+}

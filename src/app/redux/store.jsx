@@ -17,9 +17,16 @@ import SearchRecipesReducer from "./Slice/SearchRecipesSlice";
 
 import RecipesUserReducer from "./Slice/RecipesUserSlice";
 
-import MyRecipesReducer from "./Slice/MyRecipesSlice";
-import DetailRecipes from "./Slice/DetailRecipesSlice";
-import CategorySlice from "./Slice/CategorySlice";
+import DetailRecipesReducer from "./Slice/DetailRecipesSlice";
+import CategoryReducer from "./Slice/CategorySlice";
+
+
+// Page MyRecipes
+import MyRecipesGetAllRecipesReducer from "./Slice/MyRecipesGetAllRecipesSlice"
+import MyRecipesDeleteSelectedRecipesReducer from "./Slice/MyRecipesDeleteSelectedRecipesSlice"
+import MyRecipesPostRecipesReducer from "./Slice/MyRecipesPostRecipesSlice"
+import MyRecipesGetDetailsRecipesReducer from "./Slice/MyRecipesGetDetailsRecipesSlice"
+import MyRecipesPutRecipesReducer from "./Slice/MyRecipesPutRecipesSlice"
 
 export default configureStore({
   reducer: {
@@ -27,14 +34,13 @@ export default configureStore({
     HomePopular: HomePopularReducer,
 
     SearchRecipes: SearchRecipesReducer,
-    DetailRecipes: DetailRecipes,
-    Category: CategorySlice,
+    DetailRecipes: DetailRecipesReducer,
+    Category: CategoryReducer,
 
     // CategoryProduct : CategoryProductReducer,
 
     ProfileUser: ProfileUserReducer,
 
-    MyRecipes: MyRecipesReducer,
     // ProductBySearch: ProductBySearchReducer,
     // ProductBySeller: ProductBySellerReducer,
 
@@ -42,5 +48,14 @@ export default configureStore({
     SignUpUser: SignUpUserReducer,
 
     RecipesUser: RecipesUserReducer,
+
+
+
+    //Page MyRecipes
+    MyRecipesGetAllRecipes :  MyRecipesGetAllRecipesReducer,
+    MyRecipesDeleteSelectedRecipes : MyRecipesDeleteSelectedRecipesReducer,
+    MyRecipesPostRecipes : MyRecipesPostRecipesReducer,
+    MyRecipesGetDetailsRecipes : MyRecipesGetDetailsRecipesReducer,
+    MyRecipesPutRecipes : MyRecipesPutRecipesReducer
   },
 });

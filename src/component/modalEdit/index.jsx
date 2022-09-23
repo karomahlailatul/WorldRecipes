@@ -85,6 +85,7 @@ function ModalEdit() {
         setNewPicture();
         setPreview();
         dispatchProfileUser();
+        document.getElementById("modal-edit-profile-close").click();
       });
   };
 
@@ -106,7 +107,7 @@ function ModalEdit() {
         aria-hidden="true"
       >
         <div className="modal-dialog modal-xl">
-          <form onSubmit={handleUpdate}>
+          <form id="form-edit-profile" onSubmit={handleUpdate}>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -114,12 +115,14 @@ function ModalEdit() {
                 </h5>
                 <button
                   type="button"
+                  id="modal-edit-profile-close"
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                   onClick={(e) => {
                     setPreview();
                     setNewPicture();
+                    document.getElementById("form-edit-profile").reset();
                   }}
                 ></button>
               </div>
@@ -157,6 +160,7 @@ function ModalEdit() {
                   onClick={(e) => {
                     setPreview();
                     setNewPicture();
+                    document.getElementById("form-edit-profile").reset();
                   }}
                 >
                   Close
@@ -164,12 +168,7 @@ function ModalEdit() {
                 <button
                   type="submit"
                   className="btn btn-warning text-light"
-                  onClick={(e) => {
-                    setTimeout(() => {
-                      setPreview();
-                      setNewPicture();
-                    }, 2500);
-                  }}
+                 
                 >
                   Save changes
                 </button>
