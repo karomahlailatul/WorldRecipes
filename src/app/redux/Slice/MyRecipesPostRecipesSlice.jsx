@@ -19,20 +19,20 @@ export const postMyRecipesPostRecipes = createAsyncThunk("MyRecipesPostRecipes/p
             Authorization: `Bearer ${token}`,
           },
         })
-        // console.log(response)
+        
         .then((res) => {
           // console.log(res);
           toast.success(res.data.message, { autoClose: 2500 });
           return res.data;
         })
         .catch((err) => {
-          // getMyRecipesPostRecipes()
+    
           // console.log(err);
           toast.warning(err.response.data.message, { autoClose: 2500 });
           return err.response.data
           // alert(err);
         });
-      // console.log(response.data)
+        
       return response;
     }
   } catch (error) {
