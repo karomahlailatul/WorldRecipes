@@ -11,10 +11,6 @@ import MyPagination from "../../component/Pagination";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
-import stars from "../../assets/images/icons/stars.svg";
-
-// import CardRecipes from "../../component/CardRecipes";
-
 const SearchRecipes = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   let keywordParamSearch = searchParams.get("keyword");
@@ -24,11 +20,6 @@ const SearchRecipes = () => {
   let pageParamSearch = searchParams.get("page") || "1";
   let limitParamSearch = searchParams.get("limit") || "24";
 
-  // console.log(keywordParamSearch);
-  // console.log(sortbyParam)
-  // console.log(sortParam)
-  // console.log(pageParam)
-  // console.log(limitParam)
 
   let keywordSearch = `search=${keywordParamSearch}&`;
   let valueSearch = `sortby=${sortbyParamSearch}&sort=${sortParamSearch}&page=${pageParamSearch}&limit=${limitParamSearch}`;
@@ -43,34 +34,21 @@ const SearchRecipes = () => {
     pagination_totalPage,
   } = useSelector((state) => state.SearchRecipes);
 
-  // console.log(SearchRecipes);
-  // let valueSenderSearch = "";
 
-const dispatchGetCategoryRecipes = async ()=>{
-  if (searchParams === null || searchParams  === undefined) {
-    let valueSenderSearch = valueSearch;
-    await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
-    // console.log(valueSenderSearch)
-    // let valueSender = keywordSearch + valueSearch;
-    // await dispatch(getSearchRecipes(valueSender)).unwrap();
-  } else 
-  if (keywordParamSearch !== null || keywordParamSearch !== undefined)
-   {
-    // valueSender = valueSearch;
-    // await dispatch(getSearchRecipes(valueSender)).unwrap();
-    let valueSenderSearch = keywordSearch + valueSearch;
-    await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
-    // console.log(valueSenderSearch)
-    
-  }
-}
-
+  const dispatchGetCategoryRecipes = async () => {
+    if (!document.getElementById("input-search").value) {
+      let valueSenderSearch = valueSearch;
+      await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
+    } else if (document.getElementById("input-search").value) {
+      let valueSenderSearch = keywordSearch + valueSearch;
+      await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
+    }
+  };
 
   useEffect(() => {
-    
-    dispatchGetCategoryRecipes()
+    dispatchGetCategoryRecipes();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, keywordParamSearch, valueSearch, dispatch]);
+  }, [searchParams, keywordSearch, valueSearch]);
 
   return (
     <Fragment>
@@ -83,12 +61,16 @@ const dispatchGetCategoryRecipes = async ()=>{
                   {keywordParamSearch !== null ? (
                     <div>
                       <h1 className="fw-bold">Find : {keywordParamSearch}</h1>
-                      <p className="fs-6 text-muted">Total Recipes {pagination_totalData}</p>
+                      <p className="fs-6 text-muted">
+                        Total Recipes {pagination_totalData}
+                      </p>
                     </div>
                   ) : (
                     <div>
                       <h1 className="fw-bold">Please Filled Search</h1>
-                      <p className="fs-6 text-muted">Total Recipes {pagination_totalData}</p>
+                      <p className="fs-6 text-muted">
+                        Total Recipes {pagination_totalData}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -155,16 +137,32 @@ const dispatchGetCategoryRecipes = async ()=>{
                 <div className="row d-flex">
                   <Fragment>
                     {SearchRecipes.map((item) => (
-                      <Link className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none" to={`../recipes/${item.id}`} key={item.id}>
+                      <Link
+                        className="col-xl-4 col-lg-4 col-md-6 col-sm-6 my-2 link-product text-decoration-none"
+                        to={`../recipes/${item.id}`}
+                        key={item.id}
+                      >
                         <Card className="container border rounded align-items-center ShadowBox">
                           <div key={item.id}>
                             <div className="d-flex justify-content-center out-img-recipes">
-                              <img className="img-recipes" referrerPolicy="no-referrer" src={item.photo_id} alt="" />
+                              <img
+                                className="img-recipes"
+                                referrerPolicy="no-referrer"
+                                src={item.photo_id}
+                                alt=""
+                              />
                             </div>
-                            <h5 className="text-dark fw-bold title-recipes">{item.name}</h5>
-                            <p className="text-muted text-description-search"> {item.description}</p>
+                            <h5 className="text-dark fw-bold title-recipes">
+                              {item.name}
+                            </h5>
+                            <p className="text-muted text-description-search">
+                              {" "}
+                              {item.description}
+                            </p>
                             <div className="d-flex justify-content-center">
-                              <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">Learn More</button>
+                              <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light mb-3">
+                                Learn More
+                              </button>
                             </div>
                           </div>
                         </Card>

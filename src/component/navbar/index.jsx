@@ -165,7 +165,7 @@ const NavBar = () => {
                         <div className="col-xl-12 col-lg-12">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
-                              <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                              <input className="form-control rounded-pill border-0 " id="input-search" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
                                   navigate("../recipes?" + searchParams);
@@ -254,7 +254,7 @@ const NavBar = () => {
                         <div className="col-xl-8 col-lg-8">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
-                              <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                              <input className="form-control rounded-pill border-0 " id="input-search" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
                                   navigate("../recipes?" + searchParams);
@@ -329,7 +329,7 @@ const NavBar = () => {
                         <div className="col-xl-12 col-lg-12">
                           <Form onSubmit={handleSearchSubmit} className="form-search d-flex">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
-                              <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                              <input className="form-control rounded-pill border-0 " id="input-search" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
                                   navigate("../recipes?" + searchParams);
@@ -378,7 +378,7 @@ const NavBar = () => {
                         <div className="col-xl-8 col-lg-8 d-flex">
                           <Form onSubmit={handleSearchSubmit} className="col-12 form-search d-flex ">
                             <div className="col-12 d-flex border border-1 rounded-pill form-input">
-                              <input className="form-control rounded-pill border-0 " type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                              <input className="form-control rounded-pill border-0 " id="input-search" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
                               <Button
                                 onClick={() => {
                                   navigate("../recipes?" + searchParams);
