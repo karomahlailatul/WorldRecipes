@@ -44,17 +44,17 @@ const SearchRecipes = () => {
   } = useSelector((state) => state.SearchRecipes);
 
   // console.log(SearchRecipes);
-  let valueSenderSearch = "";
+  // let valueSenderSearch = "";
 
 const dispatchGetCategoryRecipes = async ()=>{
-  if (searchParams === null || searchParams === undefined) {
-    valueSenderSearch = valueSearch;
+  if (searchParams === null || searchParams  === undefined) {
+    let valueSenderSearch = valueSearch;
     await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
     // console.log(valueSenderSearch)
     // let valueSender = keywordSearch + valueSearch;
     // await dispatch(getSearchRecipes(valueSender)).unwrap();
   } else 
-  // if (keywordParamSearch === null || keywordParamSearch === undefined)
+  if (keywordParamSearch !== null || keywordParamSearch !== undefined)
    {
     // valueSender = valueSearch;
     // await dispatch(getSearchRecipes(valueSender)).unwrap();
@@ -64,11 +64,13 @@ const dispatchGetCategoryRecipes = async ()=>{
     
   }
 }
+
+
   useEffect(() => {
     
     dispatchGetCategoryRecipes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keywordSearch, valueSearch, dispatch]);
+  }, [searchParams, keywordParamSearch, valueSearch, dispatch]);
 
   return (
     <Fragment>
@@ -85,7 +87,7 @@ const dispatchGetCategoryRecipes = async ()=>{
                     </div>
                   ) : (
                     <div>
-                      <h1 className="fw-bold">Show All Recipes</h1>
+                      <h1 className="fw-bold">Please Filled Search</h1>
                       <p className="fs-6 text-muted">Total Recipes {pagination_totalData}</p>
                     </div>
                   )}
