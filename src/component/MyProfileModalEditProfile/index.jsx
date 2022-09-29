@@ -101,7 +101,7 @@ function ModalEdit() {
       <div
         className="modal fade"
         id="modal-edit"
-        // data-bs-backdrop="static"
+        data-bs-backdrop="static"
         tabIndex="-1"
         aria-labelledby="modal-edit"
         aria-hidden="true"

@@ -120,12 +120,10 @@ const MyRecipes = () => {
         Cell: (item) => {
           return (
             <Fragment>
-              <img
-                className="img-thumbnails"
-                referrerPolicy="no-referrer"
-                src={item.row.original.photo_id}
-                alt=""
-              />
+            
+              <p className="description-recipes-table">
+                {item.row.original.videos_id}
+              </p>
             </Fragment>
           );
         },
@@ -159,7 +157,7 @@ const MyRecipes = () => {
                 }
                 />
 
-                <h6>{item.row.original.id}</h6>
+                {/* <h6>{item.row.original.id}</h6> */}
               </div>
             </Fragment>
           );
@@ -267,7 +265,7 @@ const MyRecipes = () => {
                         dispatchMyRecipesGetAllRecipes
                       }
                     />
-                    <div className="col-8 d-flex border border-1 rounded-pill ">
+                    <div className="col-xl-8 col-lg-6 col-md-6 col-sm-6 d-flex border border-1 rounded-pill ">
                       <input
                         className="form-control border-0 rounded-pill bg-transparent"
                         placeholder={`Search Product`}

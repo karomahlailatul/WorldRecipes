@@ -99,8 +99,8 @@ const Category = () => {
                         }
                       }}
                     >
-                      <option value="desc">New Category</option>
-                      <option value="asc">Oldest Category</option>
+                      <option value="desc">New Recipes</option>
+                      <option value="asc">Oldest Recipes</option>
                     </Form.Select>
                   </div>
                   <div className="col-4 d-flex align-items-center">

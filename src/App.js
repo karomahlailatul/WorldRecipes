@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
-import Profile from "./pages/Profile";
+import MyProfile from "./pages/MyProfile";
 import DetailResep from "./pages/DetailRecipes";
 import MyRecipe from "./pages/MyRecipes";
 import SearchRecipes from "./pages/SearchRecipes";
@@ -58,7 +58,7 @@ function App() {
               path="/profile"
               element={
                 <RequireAuth>
-                  <Profile />
+                  <MyProfile />
                 </RequireAuth>
               }
             />

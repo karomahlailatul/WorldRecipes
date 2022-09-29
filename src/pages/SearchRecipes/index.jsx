@@ -47,7 +47,7 @@ const SearchRecipes = () => {
   let valueSenderSearch = "";
 
 const dispatchGetCategoryRecipes = async ()=>{
-  if (keywordParamSearch === null || keywordParamSearch === undefined) {
+  if (searchParams === null || searchParams === undefined) {
     valueSenderSearch = valueSearch;
     await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
     // console.log(valueSenderSearch)
@@ -68,7 +68,7 @@ const dispatchGetCategoryRecipes = async ()=>{
     
     dispatchGetCategoryRecipes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, keywordParamSearch, valueSearch, dispatch]);
+  }, [keywordSearch, valueSearch, dispatch]);
 
   return (
     <Fragment>

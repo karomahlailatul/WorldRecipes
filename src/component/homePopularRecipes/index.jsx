@@ -75,11 +75,14 @@ const HomePopularRecipes = () => {
                     <div className="col-xl-5 col-lg-5 col-md-4 col-sm-12 ">
                       <img referrerPolicy="no-referrer" className="imageswipper1" onClick={() => navigate("")} src={item.photo_id} alt="" />
                     </div>
-                    <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text">
+                    <div className="col-xl-7 col-lg-7 col-md-8 col-sm-12 mt-sm-4 mb-sm-5 swiper-text d-sm-grid">
                       <h2 className="text-truncate">{item.name}</h2>
                       <p className="text-truncate">{item.description}</p>
+                      
+                      <div>
                       <button className="btn btn-warning rounded-pill mt-xl-5 mt-lg-5 mt-md-2 mt-sm-2 text-light" onClick={(e)=> {navigate(`../recipes/${item.id}`)}}>Learn More</button>
-                   </div>
+                  
+                      </div>  </div>
                   </div>
                 </SwiperSlide>
               ))}

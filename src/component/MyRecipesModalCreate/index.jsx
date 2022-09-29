@@ -69,7 +69,7 @@ function MyRecipesModalCreate({
 
   return (
     <Fragment>
-      <div className="col-2 d-grid px-3">
+      <div className="col-xl-2 col-lg-3 col-md-3 col-sm-3 d-grid px-3">
         <button className="btn btn-success rounded-pill" onClick={handleShowCreate}>
           Create Recipes
         </button>
