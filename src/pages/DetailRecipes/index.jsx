@@ -68,7 +68,7 @@ const DetailRecipes = () => {
 
   const handleComment = async (e) => {
     await e.preventDefault();
-    dispatch(postDetailsRecipesPostComment(dataComment))
+    await dispatch(postDetailsRecipesPostComment(dataComment))
       .unwrap()
 
       .then((item) => {
