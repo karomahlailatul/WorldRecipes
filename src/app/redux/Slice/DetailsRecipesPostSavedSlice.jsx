@@ -75,7 +75,7 @@ const DetailsRecipesPostSavedSlice = createSlice({
       state.isLoading = false;
       state.DetailsRecipesPostSaved = action.payload;
       state.status = "success";
-      console.log(action.payload)
+      // console.log(action.payload)
     },
     [postDetailsRecipesPostSaved.rejected]: (state, action) => {
       state.isLoading = false;
