@@ -73,7 +73,7 @@ const RecipesUserSlice = createSlice({
       state.isLoading = false;
 
       state.RecipesUser = action.payload;
-      if (action.payload !== undefined) {
+      // if (action.payload !== undefined) {
         // state.user_id = action.payload.data.id;
         // state.user_email = action.payload.data.email;
         // state.user_name = action.payload.data.name;
@@ -88,7 +88,7 @@ const RecipesUserSlice = createSlice({
         // state.user_role = action.payload.data.role;
         // state.user_created_on = action.payload.data.created_on;
         // state.user_updated_on = action.payload.data.updated_on;
-      }
+      // }
 
       // console.log( action.payload)
     },
