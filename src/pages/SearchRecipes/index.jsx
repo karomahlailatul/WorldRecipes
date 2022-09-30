@@ -20,7 +20,6 @@ const SearchRecipes = () => {
   let pageParamSearch = searchParams.get("page") || "1";
   let limitParamSearch = searchParams.get("limit") || "24";
 
-
   let keywordSearch = `search=${keywordParamSearch}&`;
   let valueSearch = `sortby=${sortbyParamSearch}&sort=${sortParamSearch}&page=${pageParamSearch}&limit=${limitParamSearch}`;
 
