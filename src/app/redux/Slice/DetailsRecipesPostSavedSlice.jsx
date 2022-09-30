@@ -28,7 +28,7 @@ export const postDetailsRecipesPostSaved = createAsyncThunk(
 
           .then((res) => {
             if (res.data.statusCode === 201) {
-              toast.success("Recipes Has Sended", {
+              toast.success("Recipes has Saved", {
                 autoClose: 2000,
                 toastId: "successSaved",
               });

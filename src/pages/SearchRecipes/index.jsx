@@ -44,7 +44,7 @@ const SearchRecipes = () => {
     //   await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
     // }
 
-    if (keywordParamSearch === null ) {
+    if (!document.getElementById("input-search").value) {
       let valueSenderSearch = valueSearch;
       await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
     } else if (keywordParamSearch !== null) {

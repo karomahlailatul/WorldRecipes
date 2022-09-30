@@ -8,6 +8,7 @@ import PrivateAxios from "../../axios/PrivateAxios";
 export const deleteDetailsRecipesDeleteSaved = createAsyncThunk("DetailsRecipesDeleteSaved/deletedSelectedDetailsRecipesDeleteSaved", async (id) => {
   let api = PrivateAxios();
   // try {
+    console.log(id)
     const token = localStorage.getItem("token");
     // const id_saved_recipes = localStorage.getItem("id");
     if (token) {

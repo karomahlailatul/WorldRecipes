@@ -28,7 +28,7 @@ export const postDetailsRecipesPostLikes = createAsyncThunk(
 
           .then((res) => {
             // if (res.data.statusCode === 201) {
-              toast.success("Likes Has Sended", {
+              toast.success("Recipes has Likes", {
                 autoClose: 2000,
                 toastId: "successLikes",
               });
