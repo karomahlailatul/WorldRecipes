@@ -28,10 +28,10 @@ export const postDetailsRecipesPostLikes = createAsyncThunk(
 
           .then((res) => {
             // if (res.data.statusCode === 201) {
-            //   toast.success("Recipes Has Sended", {
-            //     autoClose: 2000,
-            //     toastId: "successLikes",
-            //   });
+              toast.success("Likes Has Sended", {
+                autoClose: 2000,
+                toastId: "successLikes",
+              });
             // } else {
             //   toast.warning(res.data.message, {
             //     autoClose: 2000,
@@ -42,10 +42,10 @@ export const postDetailsRecipesPostLikes = createAsyncThunk(
           })
           .catch((err) => {
             // console.log(err);
-            // toast.warning(err.response.data.message, {
-            //   autoClose: 2500,
-            //   toastId: "errorLikes",
-            // });
+            toast.warning(err.response.data.message, {
+              autoClose: 2500,
+              toastId: "errorLikes",
+            });
             return err.response.data;
             // alert(err);
           });

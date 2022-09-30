@@ -36,10 +36,18 @@ const SearchRecipes = () => {
 
 
   const dispatchGetCategoryRecipes = async () => {
-    if (!document.getElementById("input-search").value) {
+    // if (!document.getElementById("input-search").value) {
+    //   let valueSenderSearch = valueSearch;
+    //   await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
+    // } else if (document.getElementById("input-search").value) {
+    //   let valueSenderSearch = keywordSearch + valueSearch;
+    //   await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
+    // }
+
+    if (keywordParamSearch === null ) {
       let valueSenderSearch = valueSearch;
       await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
-    } else if (document.getElementById("input-search").value) {
+    } else if (keywordParamSearch !== null) {
       let valueSenderSearch = keywordSearch + valueSearch;
       await dispatch(getSearchRecipes(valueSenderSearch)).unwrap();
     }
