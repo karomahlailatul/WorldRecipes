@@ -5,13 +5,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import PrivateAxios from "../../axios/PrivateAxios";
 
-export const deleteDetailsRecipesDeleteLikes = createAsyncThunk("DetailsRecipesDeleteLikes/deletedSelectedDetailsRecipesDeleteLikes", async () => {
+export const deleteDetailsRecipesDeleteLikes = createAsyncThunk("DetailsRecipesDeleteLikes/deletedSelectedDetailsRecipesDeleteLikes", async (id) => {
   let api = PrivateAxios();
   // try {
     const token = localStorage.getItem("token");
-    const id_likes_recipes = localStorage.getItem("id");
+    // const id_likes_recipes = localStorage.getItem("id");
     if (token) {
-      const response = await api.delete(process.env.REACT_APP_API_BACKEND + "likesrecipes/" + id_likes_recipes, {
+      const response = await api.delete(process.env.REACT_APP_API_BACKEND + "likesrecipes/" + id, {
           headers: {
           Authorization: `Bearer ${token}`,
           "Access-Control-Allow-Origin": "*",

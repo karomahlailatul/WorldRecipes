@@ -151,7 +151,7 @@ const DetailRecipes = () => {
                           } else {
                             // console.log("uncheck likes")
 
-                            dispatch(deleteDetailsRecipesDeleteLikes())
+                            dispatch(deleteDetailsRecipesDeleteLikes(id))
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 200) {
@@ -203,7 +203,7 @@ const DetailRecipes = () => {
                           } else {
                             // console.log("uncheck likes")
 
-                            dispatch(deleteDetailsRecipesDeleteSaved())
+                            dispatch(deleteDetailsRecipesDeleteSaved(id))
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 200) {
