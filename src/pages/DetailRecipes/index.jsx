@@ -208,8 +208,8 @@ const DetailRecipes = () => {
               <Fragment>
                 <form onSubmit={handleComment}>
                   <div className="mb-3">
-                    <label className="form-label">Comment</label>
-                    <textarea className="form-control text-area-comment" name="comment" rows="5" onChange={handleChangeComment}></textarea>
+                    {/* <label className="form-label">Comment</label> */}
+                    <textarea placeholder="Comment" className="form-control text-area-comment" name="comment" rows="5" onChange={handleChangeComment}></textarea>
                     <button className="btn btn-warning text-light my-2" type="submit">
                       Send Comment
                     </button>
@@ -219,7 +219,7 @@ const DetailRecipes = () => {
             ) : null}
 
             <div className="mb-5">
-              <h1 className="mt-5 mb-4">Comment</h1>
+              <h2 className="mt-5 mb-4">Comment</h2>
               {DetailsRecipesGetComment.map((item) => (
                 <div className="card my-3 shadow-sm" key={item.id}>
                   <div className="card-body">
