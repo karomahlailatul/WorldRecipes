@@ -204,7 +204,11 @@ const DetailRecipes = () => {
               <ReactPlayer className="react-player" url={DetailRecipes.videos_id} width="100%" height="100%" controls={false} />
             </div>
 
-            {isAuth ? (
+        
+
+            <div className="mb-5">
+              <h2 className="mt-5 mb-4">Comment</h2>
+              {isAuth ? (
               <Fragment>
                 <form onSubmit={handleComment}>
                   <div className="mb-3 mt-3">
@@ -217,9 +221,7 @@ const DetailRecipes = () => {
                 </form>
               </Fragment>
             ) : null}
-
-            <div className="mb-5">
-              <h2 className="mt-5 mb-4">Comment</h2>
+            
               {DetailsRecipesGetComment.map((item) => (
                 <div className="card my-3 shadow-sm" key={item.id}>
                   <div className="card-body">
