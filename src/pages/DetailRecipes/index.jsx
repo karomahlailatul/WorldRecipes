@@ -207,7 +207,7 @@ const DetailRecipes = () => {
             {isAuth ? (
               <Fragment>
                 <form onSubmit={handleComment}>
-                  <div className="mb-3">
+                  <div className="mb-3 mt-3">
                     {/* <label className="form-label">Comment</label> */}
                     <textarea placeholder="Comment" className="form-control text-area-comment" name="comment" rows="5" onChange={handleChangeComment}></textarea>
                     <button className="btn btn-warning text-light my-2" type="submit">
