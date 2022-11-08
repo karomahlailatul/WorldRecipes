@@ -219,7 +219,7 @@ const DetailRecipes = () => {
             ) : null}
 
             <div className="mb-5">
-              <h3 className="mt-5 mb-4">Comment</h3>
+              <h1 className="mt-5 mb-4">Comment</h1>
               {DetailsRecipesGetComment.map((item) => (
                 <div className="card my-3 shadow-sm" key={item.id}>
                   <div className="card-body">
