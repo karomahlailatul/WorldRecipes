@@ -30,15 +30,9 @@ const DetailRecipes = () => {
 
   const dispatch = useDispatch();
   const { DetailRecipes } = useSelector((state) => state.DetailRecipes);
-  const { DetailsRecipesGetComment } = useSelector(
-    (state) => state.DetailsRecipesGetComment
-  );
-  const { DetailsRecipesGetLikes } = useSelector(
-    (state) => state.DetailsRecipesGetLikes
-  );
-  const { DetailsRecipesGetSaved } = useSelector(
-    (state) => state.DetailsRecipesGetSaved
-  );
+  const { DetailsRecipesGetComment } = useSelector((state) => state.DetailsRecipesGetComment);
+  const { DetailsRecipesGetLikes } = useSelector((state) => state.DetailsRecipesGetLikes);
+  const { DetailsRecipesGetSaved } = useSelector((state) => state.DetailsRecipesGetSaved);
 
   // console.log(DetailsRecipesGetLikes.length)
 
@@ -80,26 +74,26 @@ const DetailRecipes = () => {
 
   const detailLikes = () => {
     if (isAuth) {
-    if (DetailsRecipesGetLikes.length === 0) {
-      document.getElementById("likes").checked = false;
-      // document.getElementById("btn-likes").click = false;
-    } else {
-      document.getElementById("likes").checked = true;
-      // document.getElementById("btn-likes").checked = true;
-      
-    }}
+      if (DetailsRecipesGetLikes.length === 0) {
+        document.getElementById("likes").checked = false;
+        // document.getElementById("btn-likes").click = false;
+      } else {
+        document.getElementById("likes").checked = true;
+        // document.getElementById("btn-likes").checked = true;
+      }
+    }
   };
 
   const detailSaved = () => {
-
     if (isAuth) {
-    if (DetailsRecipesGetSaved.length === 0) {
-      document.getElementById("saved").checked = false;
-      // document.getElementById("btn-saved").checked = false;
-    } else {
-      document.getElementById("saved").checked = true;
-      // document.getElementById("btn-saved").checked = true;
-    }}
+      if (DetailsRecipesGetSaved.length === 0) {
+        document.getElementById("saved").checked = false;
+        // document.getElementById("btn-saved").checked = false;
+      } else {
+        document.getElementById("saved").checked = true;
+        // document.getElementById("btn-saved").checked = true;
+      }
+    }
   };
 
   useEffect(() => {
@@ -120,12 +114,7 @@ const DetailRecipes = () => {
           <div className="position-relative text-center">
             <div className="DetailRecipes">
               <h1 className="">{DetailRecipes.name}</h1>
-              <img
-                referrerPolicy="no-referrer"
-                className="img-promotion mt-5"
-                src={DetailRecipes.photo_id}
-                alt=""
-              />
+              <img referrerPolicy="no-referrer" className="img-promotion mt-5" src={DetailRecipes.photo_id} alt="" />
               {isAuth ? (
                 <Fragment>
                   <div className="d-flex justify-content-end">
@@ -143,9 +132,7 @@ const DetailRecipes = () => {
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 201) {
-                                  dispatch(
-                                    getDetailsRecipesGetLikes(id)
-                                  ).unwrap();
+                                  dispatch(getDetailsRecipesGetLikes(id)).unwrap();
                                 }
                               });
                           } else {
@@ -155,29 +142,15 @@ const DetailRecipes = () => {
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 200) {
-                                  dispatch(
-                                    getDetailsRecipesGetLikes(id)
-                                  ).unwrap();
+                                  dispatch(getDetailsRecipesGetLikes(id)).unwrap();
                                 }
                               });
                           }
                         }}
                       />
 
-                      <label
-                        className="btn btn-light btn-likes"
-                        id="btn-likes"
-                        htmlFor="likes"
-                      >
-                        <img
-                          className="icon-likes"
-                          alt=""
-                          src={
-                            DetailsRecipesGetLikes.length === 0
-                              ? LikesNone
-                              : LikesFill
-                          }
-                        ></img>
+                      <label className="btn btn-light btn-likes" id="btn-likes" htmlFor="likes">
+                        <img className="icon-likes" alt="" src={DetailsRecipesGetLikes.length === 0 ? LikesNone : LikesFill}></img>
                       </label>
                     </div>
 
@@ -195,9 +168,7 @@ const DetailRecipes = () => {
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 201) {
-                                  dispatch(
-                                    getDetailsRecipesGetSaved(id)
-                                  ).unwrap();
+                                  dispatch(getDetailsRecipesGetSaved(id)).unwrap();
                                 }
                               });
                           } else {
@@ -207,29 +178,15 @@ const DetailRecipes = () => {
                               .unwrap()
                               .then((item) => {
                                 if (item.statusCode === 200) {
-                                  dispatch(
-                                    getDetailsRecipesGetSaved(id)
-                                  ).unwrap();
+                                  dispatch(getDetailsRecipesGetSaved(id)).unwrap();
                                 }
                               });
                           }
                         }}
                       />
 
-                      <label
-                        className="btn btn-light btn-saved"
-                        id="btn-saved"
-                        htmlFor="saved"
-                      >
-                        <img
-                          className="icon-likes"
-                          alt=""
-                          src={
-                            DetailsRecipesGetSaved.length === 0
-                              ? SavedNone
-                              : SavedFill
-                          }
-                        ></img>
+                      <label className="btn btn-light btn-saved" id="btn-saved" htmlFor="saved">
+                        <img className="icon-likes" alt="" src={DetailsRecipesGetSaved.length === 0 ? SavedNone : SavedFill}></img>
                       </label>
                     </div>
                   </div>
@@ -240,33 +197,20 @@ const DetailRecipes = () => {
 
           <div className="container">
             <h2 className="text cover mt-5">Description</h2>
-            <p className="mt-5 recipes-details-description">
-              {DetailRecipes.description}
-            </p>
+            <p className="mt-5 recipes-details-description">{DetailRecipes.description}</p>
             <h2 className="text cover my-5">Video Step</h2>
-            <ReactPlayer
-              className="react-player"
-              url={DetailRecipes.videos_id}
-              width="100%"
-              height="100%"
-              controls={false}
-            />
+
+            <div className="player-wrapper">
+              <ReactPlayer className="react-player" url={DetailRecipes.videos_id} width="100%" height="100%" controls={false} />
+            </div>
 
             {isAuth ? (
               <Fragment>
                 <form onSubmit={handleComment}>
                   <div className="mb-3">
                     <label className="form-label">Comment</label>
-                    <textarea
-                      className="form-control text-area-comment"
-                      name="comment"
-                      rows="5"
-                      onChange={handleChangeComment}
-                    ></textarea>
-                    <button
-                      className="btn btn-warning text-light my-2"
-                      type="submit"
-                    >
+                    <textarea className="form-control text-area-comment" name="comment" rows="5" onChange={handleChangeComment}></textarea>
+                    <button className="btn btn-warning text-light my-2" type="submit">
                       Send Comment
                     </button>
                   </div>
@@ -280,24 +224,10 @@ const DetailRecipes = () => {
                 <div className="card my-3 shadow-sm" key={item.id}>
                   <div className="card-body">
                     <div className="d-flex ">
-                      <img
-                        referrerPolicy="no-referrer"
-                        src={
-                          item.users_picture === null ||
-                          item.users_picture === undefined
-                            ? PhotoEmpty
-                            : item.users_picture
-                        }
-                        width="40"
-                        height="40"
-                        className="rounded-circle"
-                        alt=""
-                      />
+                      <img referrerPolicy="no-referrer" src={item.users_picture === null || item.users_picture === undefined ? PhotoEmpty : item.users_picture} width="40" height="40" className="rounded-circle" alt="" />
                       <div className="ms-3 w-100 ">
                         <h6 className="fw-bold">{item.users_name}</h6>
-                        <p className="recipes-details-comment">
-                          {item.comment}{" "}
-                        </p>
+                        <p className="recipes-details-comment">{item.comment} </p>
                       </div>
                     </div>
                   </div>
