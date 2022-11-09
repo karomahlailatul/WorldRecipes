@@ -1,7 +1,7 @@
 # WorldRecipes
 
 ## About the project
-Shopers Built up with ReactJs with backend ExpressJS and deployment on Vercel.
+WorldRecipes Built up with ReactJs with backend ExpressJS and deployment on Vercel.
 
 ## Usage 
 
