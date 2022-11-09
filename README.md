@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# WorldRecipes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the project
+Shopers Built up with ReactJs with backend ExpressJS and deployment on Vercel.
 
-## Available Scripts
+## Usage 
 
-In the project directory, you can run:
+### Clone
+```shell
+git clone https://github.com/karomahlailatul/WorldRecipes.git
+```
+### Installing 
+```shell
+npm i;
+```
 
-### `npm start`
+### Testing
+```shell
+npm run start;
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshot
+## Desktop Preview
 
-### `npm test`
+![world-recipes vercel app_home (1)](https://user-images.githubusercontent.com/37212759/200719974-bc052aa4-a9d0-4458-99b9-c82ccd92f392.png)
+![world-recipes vercel app_home (4)](https://user-images.githubusercontent.com/37212759/200720014-08898ebc-fd20-4333-b0f7-28bf24a4489f.png)
+![world-recipes vercel app_home (7)](https://user-images.githubusercontent.com/37212759/200720095-ff33cb31-f548-42a9-965f-6b441d6a24ae.png)
+![world-recipes vercel app_home (8)](https://user-images.githubusercontent.com/37212759/200720249-248e1e6b-b9bd-4eca-8c41-c5fc38665a84.png)
+![world-recipes vercel app_home (9)](https://user-images.githubusercontent.com/37212759/200720304-7373d531-7637-498b-b460-424d8e528d9b.png)
+![world-recipes vercel app_home (10)](https://user-images.githubusercontent.com/37212759/200720323-0446c91a-1952-4c5d-bd4f-34f4a0f42fef.png)
+![world-recipes vercel app_home (11)](https://user-images.githubusercontent.com/37212759/200720335-4c8a949d-d0eb-4573-aad7-c482763e5fcf.png)
+![world-recipes vercel app_home (3)](https://user-images.githubusercontent.com/37212759/200720390-c24df135-89f2-470d-83ec-a537c6073dad.png)
+![world-recipes vercel app_home (12)](https://user-images.githubusercontent.com/37212759/200720397-340e490f-8781-46a3-b7ea-24e14c8f1234.png)
+![world-recipes vercel app_home (13)](https://user-images.githubusercontent.com/37212759/200720405-9436e650-bfa8-4c1f-bebc-c96aa9deb26e.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Mobile Preview
+![world-recipes vercel app_home](https://user-images.githubusercontent.com/37212759/200719968-b8fd10c1-9731-4b36-bd25-657419e02e78.png)
+![world-recipes vercel app_home (5)](https://user-images.githubusercontent.com/37212759/200720027-0d3292a0-a04e-4a8a-91d5-444b31c0c0fa.png)
+![world-recipes vercel app_home (6)](https://user-images.githubusercontent.com/37212759/200720120-d9f28e88-2a70-4bfd-bc0f-975583aac037.png)
+![world-recipes vercel app_profile](https://user-images.githubusercontent.com/37212759/200720107-2960c925-8561-4dba-ae1e-1f8dd0deb662.png)
+![world-recipes vercel app_profile (1)](https://user-images.githubusercontent.com/37212759/200720297-ddbd34ca-efd7-462c-9cc5-093fe561c1c6.png)
+![world-recipes vercel app_profile (3)](https://user-images.githubusercontent.com/37212759/200720310-e850392e-2ed4-46d4-a514-aa3cf7459107.png)
+![world-recipes vercel app_profile (2)](https://user-images.githubusercontent.com/37212759/200720345-b9109d10-dd54-4a33-a9c7-995f618447ac.png)
+![world-recipes vercel app_home (2)](https://user-images.githubusercontent.com/37212759/200720372-8ed8d83d-3800-4f5c-a852-dfa5f66bee6a.png)
+![world-recipes vercel app_profile (4)](https://user-images.githubusercontent.com/37212759/200720433-718f3d21-a5fe-4e0e-b16c-1031bcca38f6.png)
+![world-recipes vercel app_profile (5)](https://user-images.githubusercontent.com/37212759/200720439-6a3c5890-99f1-47f5-a546-5f444aafb8b8.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
